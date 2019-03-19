@@ -3,7 +3,8 @@ import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 
-const Profile = () => {
+const Profile = (props) => {
+  const { person } = props
   return (
     <Fragment>
         <Grid container spacing={16} direction="row">
@@ -12,7 +13,7 @@ const Profile = () => {
           </Grid>
           <Grid item>
             <Typography gutterBottom variant="subtitle1">
-                Persons Name
+                {person.firstName} {person.lastName}
             </Typography>
             <Typography gutterBottom>Persons Details</Typography>
           </Grid>
