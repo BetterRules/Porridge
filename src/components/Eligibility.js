@@ -17,7 +17,7 @@ const Wrapper = styled.div`
 const Eligibility = props => {
   return (
     <Wrapper>
-      {props.status ? <CheckIcon /> : <ClearIcon />}
+      {props.eligible ? <CheckIcon /> : <ClearIcon />}
     </Wrapper>
   );
 }

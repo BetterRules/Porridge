@@ -9,7 +9,7 @@ import Inputs from '../components/Inputs';
 import Eligibility from '../components/Eligibility';
 
 const AccordionItem = (props) => {
-  const { person, inputs } = props
+  const { person, inputs, eligible } = props
   const [expanded, expandedPanel] = useState('');
 
   const handleChange = panel => (e, expanded) => {
@@ -24,8 +24,7 @@ const AccordionItem = (props) => {
     <ExpansionPanelDetails className='Flex-Column'>
         <Profile person={person}/>
         <Inputs person={person} inputs={inputs}/>
-        <Eligibility status={true} />
-        <Eligibility status={false} />
+        <Eligibility eligible={eligible} />
       </ExpansionPanelDetails>
     </ExpansionPanel>
   );

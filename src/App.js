@@ -13,7 +13,8 @@ const examples = [
       DateOfBirth: '1998-11-11',
       DateOfInjury:'2005-04-04', 
       StartOfStudy: '2007-07-07'
-    }
+    },
+    eligible: true
   },
   {
     person: {
@@ -24,7 +25,8 @@ const examples = [
       DateOfBirth: '1998-11-11',
       DateOfInjury:'2005-04-04', 
       StartOfStudy: '2007-07-07'
-    }
+    },
+    eligible: false
   },
   {
     person: {
@@ -35,16 +37,25 @@ const examples = [
       DateOfBirth: '1998-11-11',
       DateOfInjury:'2005-04-04', 
       StartOfStudy: '2007-07-07'
-    }
+    },
+    eligible: true
   }
 
 ]
 const App = () => {
   return (
     <Paper className="App">
-      {examples.map(example => (
-        <AccordionItem key={example.person.firstName} person={example.person} inputs={example.inputs}/>
-      ))}
+      {examples.map(example => {
+        const {person, inputs, eligible} = example
+
+        return (
+        <AccordionItem
+          key={person.firstName}
+          person={person}
+          inputs={inputs}
+          eligible={eligible}/>
+      )}
+      )}
     </Paper>
   );
 }
