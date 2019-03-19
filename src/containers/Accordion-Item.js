@@ -3,6 +3,7 @@ import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import styled from 'styled-components';
 
 import Profile from '../components/Profile';
 import Inputs from '../components/Inputs';
@@ -16,15 +17,23 @@ const AccordionItem = (props) => {
       expanded ? expandedPanel(panel) : expandedPanel(false)
   };
 
+  const Header = styled.div`
+    flex-direction: row;
+    display: flex;
+    justify-content: space-between;
+  `;
+
   return (
     <ExpansionPanel expanded={expanded === person.firstName} onChange={handleChange(person.firstName)}>
     <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
       <p>{person.firstName} {person.lastName}</p>
     </ExpansionPanelSummary>
     <ExpansionPanelDetails className='Flex-Column'>
-        <Profile person={person}/>
+        <Header>
+          <Profile person={person}/>
+          <Eligibility eligible={eligible} />
+        </Header>
         <Inputs person={person} inputs={inputs}/>
-        <Eligibility eligible={eligible} />
       </ExpansionPanelDetails>
     </ExpansionPanel>
   );
