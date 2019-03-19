@@ -7,23 +7,17 @@ import Grid from '@material-ui/core/Grid';
 const Profile = () => {
   return (
     <Fragment>
-      <Paper>
-        <Grid container spacing={16}>
+        <Grid container spacing={16} direction="row">
           <Grid item>
             <Avatar alt="a person" src="https://d3iw72m71ie81c.cloudfront.net/mlin.png" />
           </Grid>
-          <Grid item xs={12} sm container>
-            <Grid item xs container direction="column" spacing={16}>
-              <Grid item xs>
-                <Typography gutterBottom variant="subtitle1">
-                  Persons Name
-                </Typography>
-                <Typography gutterBottom>Persons Details</Typography>
-              </Grid>
-            </Grid>
+          <Grid item>
+            <Typography gutterBottom variant="subtitle1">
+                Persons Name
+            </Typography>
+            <Typography gutterBottom>Persons Details</Typography>
           </Grid>
         </Grid>
-      </Paper>
     </Fragment>
   );
 }
