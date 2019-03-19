@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import TextField from '@material-ui/core/TextField';
 
 const importantDates = [
-  'Date of Birth',
-  'Date of Injury', 
-  'Start of full-time study or training',
+  ['DateOfBirth', 'Date of Birth'],
+  ['DateOfInjury', 'Date of Injury'], 
+  ['StartOfStudy', 'Start of full-time study or training'],
 ]
 
-const Inputs = () => {
-  const [name, setName] = useState('Onyx');
+const Inputs = (props) => {
+  const { person, inputs } = props
+  const [name, setName] = useState(person.firstName);
   
   const handleChange = name => event => {
     setName(event.target.value)
@@ -25,11 +26,14 @@ const Inputs = () => {
           variant="filled"
           className="Input-Date"
       />
-      {importantDates.map(label => (
+      {importantDates.map(([id, label]) => {
+        return (
         <TextField
-          id={label}
+          key={`${name}-${id}`}
+          id={id}
           label={label}
           type="date"
+          defaultValue={inputs[id]}
           variant="filled"
           margin="normal"
           className="Input-Date"
@@ -37,7 +41,7 @@ const Inputs = () => {
           shrink: true,
           }}
         />
-      ))}
+      )})}
     </form>            
   );
 }

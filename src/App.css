@@ -26,6 +26,10 @@ html, body {
 	display: flex;
 	flex-direction: row 
 }
+.Flex-Column {
+	display: flex;
+	flex-direction: column 
+}
 
 .Form-Date {
 	display: flex;
