@@ -12,9 +12,17 @@ const Wrapper = styled.div`
 `;
 
 const Eligibility = props => {
+  const { eligible } = props 
+  if (!eligible)  return null
+  const keys = Object.keys(eligible)
   return (
     <Wrapper>
-      {props.eligible ? <CheckIcon /> : <ClearIcon />}
+      {keys.map(key => {
+        const eligibleOnDay = eligible[key]
+        return (
+        <div key> {key}: {eligibleOnDay ? <CheckIcon /> : <ClearIcon />} </div>
+        )
+      })}
     </Wrapper>
   );
 }

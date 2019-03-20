@@ -1,8 +1,6 @@
 import React, { Fragment } from 'react';
-import Avatar from '@material-ui/core/Avatar';
-import Typography from '@material-ui/core/Typography';
 
-const Profile = () => {
+const Outputs = (props) => {
   return (
     <Fragment>
       <Avatar alt="a person" src="https://d3iw72m71ie81c.cloudfront.net/mlin.png" />
@@ -11,4 +9,4 @@ const Profile = () => {
   );
 }
 
-export default Profile;
+export default Outputs;
