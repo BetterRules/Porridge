@@ -1,11 +1,15 @@
 import axios from 'axios';
 import config from './config';
+import _ from 'lodash';
 
 const queryOF = (person, handleEligibility) => {
+
   let { firstName, lastName, ...queryPerson } = person
   let query = {
     persons: {
-      [firstName]: queryPerson
+      [firstName]: _.mapValues(queryPerson, (key) => {
+        return {'2018-08-01': key}
+      })
     },
     titled_properties: {
       house: {
@@ -18,7 +22,7 @@ const queryOF = (person, handleEligibility) => {
       },
     }
   }
-  
+
   console.log('in da place', config.api_url, query)
 
   return axios
