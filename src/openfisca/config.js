@@ -1,6 +1,5 @@
 const config = {
-  api_url: 'https://api.rules.nz/calculate',
-  country: 'New Zealand'
+  api_url: 'http://localhost:5000/calculate',
 };
 
 export default config;

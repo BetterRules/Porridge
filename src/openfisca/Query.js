@@ -1,20 +1,34 @@
 import axios from 'axios';
-import DATA from './Data';
 import config from './config';
 
-const queryOF = () => {
+const queryOF = (person, handleEligibility) => {
+  let { firstName, lastName, ...queryPerson } = person
+  let query = {
+    persons: {
+      [firstName]: queryPerson
+    },
+    titled_properties: {
+      house: {
+        others: [firstName],
+      },
+    },
+    families: {
+      family: {
+        others: [firstName],
+      },
+    }
+  }
+  
+  console.log('in da place', config.api_url, query)
+
   return axios
-    .post(config.api_url, DATA[config.name])
+    .post(config.api_url, query)
     .then(results =>
       results.status && results.status === 200
-        ? this.setState({
-            [`${config.name
-              .toLowerCase()
-              .replace(' ', '_')}_results`]: results,
-          })
-        : {},
+      ? handleEligibility(results.data.persons[firstName])
+      : handleEligibility({})
     )
-    .catch(err => err)
+    .catch(err => console.log(err))
 }
 
 export default queryOF;
