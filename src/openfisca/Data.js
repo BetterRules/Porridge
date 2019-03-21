@@ -13,7 +13,7 @@ const DATA = [
     date_of_injury: '2005-04-04',
     incapacity_for_employment__corporation_determination: true,
     incapacity_for_employment__by_covered_injury: true,
-    finish_date_of_full_time_study_training_bridging_18th_birthday: true,
+    finish_date_of_full_time_study_training_bridging_18th_birthday: '2010-04-04',
     acc_sched_1__lope_eligible: null,
     // engaged_fulltime_study_or_training: '2007-07-07'
     // minimum_wage___minimum_adult_rate_wages: true,
@@ -32,7 +32,7 @@ const DATA = [
     date_of_injury: true,
     incapacity_for_employment__corporation_determination: true,
     incapacity_for_employment__by_covered_injury: true,
-    finish_date_of_full_time_study_training_bridging_18th_birthday: true,
+    finish_date_of_full_time_study_training_bridging_18th_birthday: '2010-04-04',
     acc_sched_1__lope_eligible: null
     // engaged_fulltime_study_or_training: '2007-07-07'
     // minimum_wage___minimum_adult_rate_wages: true,
@@ -51,7 +51,7 @@ const DATA = [
     date_of_injury: '2005-04-04',
     incapacity_for_employment__corporation_determination: true,
     incapacity_for_employment__by_covered_injury: true,
-    finish_date_of_full_time_study_training_bridging_18th_birthday: true,
+    finish_date_of_full_time_study_training_bridging_18th_birthday: '2010-04-04',
     acc_sched_1__lope_eligible: null
     // engaged_fulltime_study_or_training: '2007-07-07'
     // minimum_wage___minimum_adult_rate_wages: true,

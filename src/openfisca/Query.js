@@ -23,8 +23,6 @@ const queryOF = (person, handleEligibility) => {
     }
   }
 
-  console.log('in da place', config.api_url, query)
-
   return axios
     .post(config.api_url, query)
     .then(results =>
