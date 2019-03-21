@@ -34,7 +34,7 @@ html, body {
 
 .Form-Date {
 	display: flex;
-	flex-direction: column
+	flex-direction: row
 }
 .Input-Date {
 	width: 20rem

@@ -5,6 +5,7 @@ import CheckIcon from '@material-ui/icons/Check';
 import ClearIcon from '@material-ui/icons/Clear';
 
 const Wrapper = styled.div`
+  margin: auto 2rem auto auto;
   svg {
     border: 1px solid #000;
     font-size: 36px;
@@ -20,7 +21,7 @@ const Eligibility = props => {
       {keys.map(key => {
         const eligibleOnDay = eligible[key]
         return (
-        <div key> {key}: {eligibleOnDay ? <CheckIcon /> : <ClearIcon />} </div>
+        <div key> {eligibleOnDay ? <CheckIcon /> : <ClearIcon />} </div>
         )
       })}
     </Wrapper>
