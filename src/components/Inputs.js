@@ -1,26 +1,13 @@
-import React, { useState, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import styled from 'styled-components';
 
 const Inputs = (props) => {
-  const { person } = props
-
-  const [state, setState] = useState({
-    ...person
-  });
-
-  const handleTextChange = name => event => {
-    setState({ ...state, [name]: event.target.value });
-  };
-
-  const handleSwitchChange = name => event => {
-    setState({ ...state, [name]: event.target.checked });
-  };
-
+  const { person, handleChange } = props
   const Spacer = styled.div`
-    margin: 0 2rem;
+    margin: 0 4rem;
   `;
 
   return (
@@ -31,41 +18,56 @@ const Inputs = (props) => {
             id="firstName"
             label="First Name"
             value= {person.firstName}
-            onChange={handleTextChange('firstName')}
+            onChange={handleChange("firstName")}
             margin="normal"
+            InputProps={{
+              readOnly: true,
+            }}
             className="Input-Date" // this should have a better classname
+        />
+        <TextField
+            id="lastName"
+            label="Last Name"
+            value= {person.lastName}
+            onChange={handleChange("firstName")}
+            margin="normal"
+            InputProps={{
+              readOnly: true,
+            }}
+            className="Input-Date" // this should have a better classname
+        />
+        {importantDates.map(([id, label]) => {
+          return (
+          <TextField
+            key={`${person.firstName}-${id}`}
+            id={id}
+            label={label}
+            type="date"
+            value={person[id]}
+            onChange={handleChange(id)}
+            margin="normal"
+            className="Input-Date"
+            InputLabelProps={{
+            shrink: true,
+            }}
           />
-          {importantDates.map(([id, label]) => {
-            return (
-              <TextField
-                key={`${person.firstName}-${id}`}
-                id={id}
-                label={label}
-                type="date"
-                value={state[id]}
-                margin="normal"
-                className="Input-Date"
-                InputLabelProps={{
-                  shrink: true,
-                }}
-              />
-            )})}
-          {changeableNumbers.map(([id, label]) => {
-            return (
-              <TextField
-                key={`${id} - ${person.firstName}`}
-                id={id}
-                label={label}
-                value={state[id]}
-                onChange={handleTextChange(id)}
-                type="number"
-                className='Input-Date'
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                margin="normal"
-              />
-            )})}
+        )})}
+        {changeableNumbers.map(([id, label]) => {
+          return (
+          <TextField
+            key={`${id} - ${person.firstName}`}
+            id={id}
+            label={label}
+            value={person[id]}
+            onChange={handleChange(id)}
+            type="number"
+            className='Input-Date'
+            InputLabelProps={{
+              shrink: true,
+            }}
+            margin="normal"
+          />
+        )})}
         </div>
         <Spacer>
           {changableBooleans.map(([id, label]) => {
@@ -74,8 +76,8 @@ const Inputs = (props) => {
                 <FormControlLabel
                   control={
                     <Switch
-                      checked={state[id]}
-                      onChange={handleSwitchChange(id)}
+                      checked={person[id]}
+                      onChange={handleChange(id)}
                       value={id}
                       color="primary"
                     />
