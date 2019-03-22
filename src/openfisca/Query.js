@@ -1,22 +1,22 @@
 import axios from 'axios';
 import config from './config';
-// import _ from 'lodash';
 
 const queryOF = (person, handleEligibility) => {
 
-  let { firstName, lastName, ...queryPerson } = person;
+  let { firstName, ...queryPerson } = person;
 
-  // console.log(queryPerson)
   let query = {
-    persons: queryPerson,
+    persons: {
+      [firstName]: queryPerson
+    },
     titled_properties: {
       house: {
-        others: ['Luke', 'Sen', 'Fox', 'Mulder'],
+        others: [firstName],
       },
     },
     families: {
       family: {
-        others: ['Luke', 'Sen', 'Fox', 'Mulder'],
+        others: [firstName],
       },
     }
   }
