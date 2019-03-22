@@ -1,22 +1,10 @@
-import React, { useState, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 const Inputs = (props) => {
-  const { person } = props
-
-  const [state, setState] = useState({
-    ...person
-    });
-  
-  const handleTextChange = name => event => {
-    setState({ ...state, [name]: event.target.value });
-  };
-
-  const handleSwitchChange = name => event => {
-    setState({ ...state, [name]: event.target.checked });
-  };
+  const { person, handleChange } = props
   
   return (
     <Fragment>
@@ -26,8 +14,22 @@ const Inputs = (props) => {
             id="firstName"
             label="First Name"
             value= {person.firstName}
-            onChange={handleTextChange("firstName")}
+            onChange={handleChange("firstName")}
             margin="normal"
+            InputProps={{
+              readOnly: true,
+            }}
+            className="Input-Date" // this should have a better classname
+        />
+        <TextField
+            id="lastName"
+            label="Last Name"
+            value= {person.lastName}
+            onChange={handleChange("firstName")}
+            margin="normal"
+            InputProps={{
+              readOnly: true,
+            }}
             className="Input-Date" // this should have a better classname
         />
         {importantDates.map(([id, label]) => {
@@ -37,7 +39,8 @@ const Inputs = (props) => {
             id={id}
             label={label}
             type="date"
-            value={state[id]}
+            value={person[id]}
+            onChange={handleChange(id)}
             margin="normal"
             className="Input-Date"
             InputLabelProps={{
@@ -51,8 +54,8 @@ const Inputs = (props) => {
             key={`${id} - ${person.firstName}`}
             id={id}
             label={label}
-            value={state[id]}
-            onChange={handleTextChange(id)}
+            value={person[id]}
+            onChange={handleChange(id)}
             type="number"
             className='Input-Date'
             InputLabelProps={{
@@ -69,8 +72,8 @@ const Inputs = (props) => {
               <FormControlLabel
                 control={
                   <Switch
-                  checked={state[id]}
-                  onChange={handleSwitchChange(id)}
+                  checked={person[id]}
+                  onChange={handleChange(id)}
                   value={id}
                   color="primary"
                 />
