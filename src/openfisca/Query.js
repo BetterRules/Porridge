@@ -3,7 +3,7 @@ import config from './config';
 
 const queryOF = (person, handleEligibility) => {
 
-  let { firstName, ...queryPerson } = person;
+  let { firstName, lastName, ...queryPerson } = person;
 
   let query = {
     persons: {
