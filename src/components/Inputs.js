@@ -2,15 +2,19 @@ import React, { Fragment } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import styled from 'styled-components';
 
 const Inputs = (props) => {
   const { person, handleChange } = props
-  
+  const Spacer = styled.div`
+    margin: 0 4rem;
+  `;
+
   return (
     <Fragment>
       <form className="Form-Date" noValidate autoComplete="off">
         <div className="Flex-Column">
-        <TextField
+          <TextField
             id="firstName"
             label="First Name"
             value= {person.firstName}
@@ -65,24 +69,24 @@ const Inputs = (props) => {
           />
         )})}
         </div>
-        <div style={{margin: '0 2rem'}}>
-        {changableBooleans.map(([id, label]) => {
-          return (
-            <div key={`${id} - ${person.firstName}`} className='Flex-Row'>
-              <FormControlLabel
-                control={
-                  <Switch
-                  checked={person[id]}
-                  onChange={handleChange(id)}
-                  value={id}
-                  color="primary"
+        <Spacer>
+          {changableBooleans.map(([id, label]) => {
+            return (
+              <div key={`${id} - ${person.firstName}`} className='Flex-Row'>
+                <FormControlLabel
+                  control={
+                    <Switch
+                      checked={person[id]}
+                      onChange={handleChange(id)}
+                      value={id}
+                      color="primary"
+                    />
+                  }
+                  label={label}
                 />
-                }
-                label={label}
-              />
-            </div>
-          )})}
-        </div>
+              </div>
+            )})}
+        </Spacer>
       </form>
     </Fragment>
   );
@@ -92,7 +96,7 @@ export default Inputs;
 
 const importantDates = [
   ['date_of_birth', 'Date of Birth'],
-  ['date_of_injury', 'Date of Injury'], 
+  ['date_of_injury', 'Date of Injury'],
   ['finish_date_of_full_time_study_training_bridging_18th_birthday', 'End date of study bridging 18th birthday']// ['StartOfStudy', 'Start of full-time study or training'],
 ]
 
