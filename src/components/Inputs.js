@@ -71,21 +71,36 @@ const Inputs = (props) => {
         </div>
         <Spacer>
           {changableBooleans.map(([id, label]) => {
-            return (
-              <div key={`${id} - ${person.firstName}`} className='Flex-Row'>
-                <FormControlLabel
+            return person[id].map(([date, value]) => {
+              return (
+                <div key={`${id} - ${person.firstName}`} className='Flex-Column'>
+                  <FormControlLabel
+                  label={label}
                   control={
                     <Switch
-                      checked={person[id]}
-                      onChange={handleChange(id)}
-                      value={id}
+                      checked={value}
+                      onChange={handleChange(id, value)}
+                      value={value}
                       color="primary"
                     />
                   }
-                  label={label}
                 />
+                <TextField
+                  key={`${person.firstName}-${id}-${date}`}
+                  id={`${id}-${date}`}
+                  type="date"
+                  value={date}
+                  onChange={handleChange(id, date)}
+                  margin="normal"
+                  className="Input-Date"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                />
+
               </div>
-            )})}
+            )})
+          })}
         </Spacer>
       </form>
     </Fragment>
