@@ -7,12 +7,14 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import QueryOF from '../openfisca/Query'
 import Inputs from '../components/Inputs'
 import Eligibility from '../components/Eligibility'
+import WeeklyCompensation from '../components/WeeklyCompensation';
 
 const AccordionItem = (props) => {
   const { person } = props
   const [expanded, expandedPanel] = useState('');
   const [currentPerson, updatePerson] = useState(person)
   const [eligible, setIsEligible] = useState(null);
+  const [weeklyCompensation, setWeeklyCompensation] = useState(null);
   const backgroundColour = eligible && eligible && eligible[Object.keys(eligible)[0]] ? '#cfc': '#fcc'
   
   const handleChange = (name, date, value, dateIsValueToUpdate) => event => {
@@ -27,7 +29,6 @@ const AccordionItem = (props) => {
       : event.target.type === "checkbox"
         ? event.target.checked
         : event.target.value
-    console.log(value, event.target.value, date)
     const updatedData = [newDate, newValue]
   
     updatePerson({...currentPerson, [name]: [updatedData] })
@@ -36,6 +37,7 @@ const AccordionItem = (props) => {
   useEffect(() => {
     function handleEligibility(res) {
       setIsEligible(res.acc_sched_1__lope_eligible)
+      setWeeklyCompensation(res.acc_sched_1__lope_weekly_compensation)
     }
     QueryOF(currentPerson, handleEligibility)
   }, [currentPerson]);
@@ -48,6 +50,7 @@ const AccordionItem = (props) => {
     <ExpansionPanel style={{'backgroundColor': backgroundColour }} expanded={expanded === currentPerson.firstName} onChange={handleAccordionChange(currentPerson.firstName)}>
     <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
       <p>{currentPerson.firstName} {currentPerson.lastName}</p>
+      <WeeklyCompensation weeklyCompensation={weeklyCompensation} />
       <Eligibility eligible={eligible} />
     </ExpansionPanelSummary>
     <ExpansionPanelDetails className='Flex-Column'>

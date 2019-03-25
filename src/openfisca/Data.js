@@ -44,7 +44,11 @@ const DATA = [
     ],
     // Output
     acc__potential_earner: [
-      ['2020-08-06', null]
+      ['2020-08-06', null],
+      ['2021-08-06', null],
+      ['2022-08-06', null],
+      ['2023-08-06', null],
+      ['2024-08-06', null]
     ],
     acc_sched_1__lope_eligible: [
       ['2020-09-06', null]
@@ -97,9 +101,22 @@ const DATA = [
       ['2018-08-03', true]
     ],
     // Output
-    acc_sched_1__lope_eligible: [
-      ['2021-08-06', null]
+    acc__potential_earner: [
+      ['2020-09-06', null]
     ],
+    acc_sched_1__lope_eligible: [
+      ['2020-09-06', null]
+    ],
+    age: [
+      ['2020-09-06', null]
+    ],
+    acc_sched_1__lope_weekly_compensation: [
+      ['2020-09-06', null],
+      ['2021-09-06', null],
+      ['2022-09-06', null],
+      ['2023-09-06', null],
+      ['2024-09-06', null]
+    ]
   },
   // Simple test for LOPE eligibility for person before and after their 18th birthday
   {
@@ -146,6 +163,13 @@ const DATA = [
     ],
     // Output
     acc_sched_1__lope_eligible: [
+      ['2018-01-01', null],
+      ['2019-01-01', null],
+      ['2020-01-01', null],
+      ['2021-01-01', null],
+      ['2022-01-01', null]
+    ],
+    acc_sched_1__lope_weekly_compensation: [
       ['2018-01-01', null],
       ['2019-01-01', null],
       ['2020-01-01', null],

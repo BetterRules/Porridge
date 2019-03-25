@@ -5,7 +5,7 @@ import CheckIcon from '@material-ui/icons/Check';
 import ClearIcon from '@material-ui/icons/Clear';
 
 const Wrapper = styled.div`
-  margin: auto 2rem auto auto;
+  margin: auto 2rem auto 2rem;
   svg {
     border: 1px solid #000;
     font-size: 36px;
