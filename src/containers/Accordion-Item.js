@@ -6,8 +6,6 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 
 import QueryOF from '../openfisca/Query'
 import Inputs from '../components/Inputs'
-import Eligibility from '../components/Eligibility'
-import WeeklyCompensation from '../components/WeeklyCompensation';
 
 const AccordionItem = (props) => {
   const { person } = props
@@ -50,13 +48,13 @@ const AccordionItem = (props) => {
     <ExpansionPanel style={{'backgroundColor': backgroundColour }} expanded={expanded === currentPerson.firstName} onChange={handleAccordionChange(currentPerson.firstName)}>
     <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
       <p>{currentPerson.firstName} {currentPerson.lastName}</p>
-      <WeeklyCompensation weeklyCompensation={weeklyCompensation} />
-      <Eligibility eligible={eligible} />
-    </ExpansionPanelSummary>
-    <ExpansionPanelDetails className='Flex-Column'>
+          </ExpansionPanelSummary>
+    <ExpansionPanelDetails className="Form-Date">
         <Inputs
-        person={currentPerson}
-        handleChange={handleChange}
+          person={currentPerson}
+          handleChange={handleChange}
+          eligible={eligible}
+          weeklyCompensation={weeklyCompensation}
         />
       </ExpansionPanelDetails>
     </ExpansionPanel>

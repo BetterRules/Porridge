@@ -3,10 +3,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  margin-left: auto;
+  margin-left: 1.5rem;
   div {
-    margin-bottom: .5rem;
-    border: 1px solid #000;
+    margin-top: .4rem;
     font-size: 36px;
     height: 37px
   }

@@ -34,7 +34,7 @@ const DATA = [
       ['ETERNITY', true]
     ],
     acc_sched_1__weekly_earnings: [
-      ['2018-08', 500]
+      ['2018-08-05', 500]
     ],
     acc__has_cover: [
       ['2018-08-05', true]
@@ -51,7 +51,11 @@ const DATA = [
       ['2024-08-06', null]
     ],
     acc_sched_1__lope_eligible: [
-      ['2020-09-06', null]
+      ['2020-09-06', null],
+      ['2021-09-06', null],
+      ['2022-09-06', null],
+      ['2023-09-06', null],
+      ['2024-09-06', null]
     ],
     age: [
       ['2020-08-06', null]
@@ -89,7 +93,7 @@ const DATA = [
       ['ETERNITY', true]
     ],
     acc_sched_1__weekly_earnings: [
-      ['2018-08', 500]
+      ['2021-09-06', 500]
     ],
     acc__has_cover: [
       ['2018-08-03', true]
@@ -105,7 +109,11 @@ const DATA = [
       ['2020-09-06', null]
     ],
     acc_sched_1__lope_eligible: [
-      ['2020-09-06', null]
+      ['2020-09-06', null],
+      ['2021-09-06', null],
+      ['2022-09-06', null],
+      ['2023-09-06', null],
+      ['2024-09-06', null]
     ],
     age: [
       ['2020-09-06', null]
@@ -153,7 +161,7 @@ const DATA = [
       ['ETERNITY', true]
     ],
     acc_sched_1__weekly_earnings: [
-      ['2018-08', 500]
+      ['2018-08-05', 500]
     ],
     acc__has_cover: [
       ['2018-08-05', true]

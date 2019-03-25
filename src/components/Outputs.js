@@ -1,11 +1,16 @@
 import React, { Fragment } from 'react';
+import Eligibility from '../components/Eligibility'
+import WeeklyCompensation from '../components/WeeklyCompensation';
 
 const Outputs = (props) => {
+  const { eligible, weeklyCompensation } = props
   return (
-    <Fragment>
-      <Avatar alt="a person" src="https://d3iw72m71ie81c.cloudfront.net/mlin.png" />
-      <Typography gutterBottom>Persons Details</Typography>
-    </Fragment>
+    <div className='Spacer'>
+      <div className='Flex-Row'>
+        <Eligibility eligible={eligible} />  
+        <WeeklyCompensation weeklyCompensation={weeklyCompensation} />
+      </div>
+    </div>
   );
 }
 
