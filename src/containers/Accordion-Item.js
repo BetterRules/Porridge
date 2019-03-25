@@ -14,11 +14,23 @@ const AccordionItem = (props) => {
   const [currentPerson, updatePerson] = useState(person)
   const [eligible, setIsEligible] = useState(null);
   const backgroundColour = eligible && eligible && eligible[Object.keys(eligible)[0]] ? '#cfc': '#fcc'
-  const handleChange = name => event => {
-    const newValue = event.target.type === "checkbox"
-    ? "checked"
-    : "value"
-    updatePerson({...currentPerson, [name]: [['ETERNITY', event.target[newValue]]] })
+  
+  const handleChange = (name, date, value, dateIsValueToUpdate) => event => {
+    const newDate = dateIsValueToUpdate
+    ? event.target.value
+    : date
+      ? date
+      : 'ETERNITY'
+
+    const newValue = value
+      ? value
+      : event.target.type === "checkbox"
+        ? event.target.checked
+        : event.target.value
+    console.log(value, event.target.value, date)
+    const updatedData = [newDate, newValue]
+  
+    updatePerson({...currentPerson, [name]: [updatedData] })
   };
 
   useEffect(() => {

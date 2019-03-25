@@ -45,7 +45,7 @@ const Inputs = (props) => {
                 label={label}
                 type="date"
                 defaultValue={value}
-                onChange={handleChange(id, date)}
+                onChange={handleChange(id)}
                 margin="normal"
                 className="Input-Date"
                 InputLabelProps={{
@@ -85,7 +85,7 @@ const Inputs = (props) => {
                   control={
                     <Switch
                       checked={value}
-                      onChange={handleChange(id, value)}
+                      onChange={handleChange(id, date)}
                       value={value}
                       color="primary"
                     />
@@ -105,7 +105,7 @@ const Inputs = (props) => {
                   control={
                     <Switch
                       checked={value}
-                      onChange={handleChange(id, value)}
+                      onChange={handleChange(id, date)}
                       value={value}
                       color="primary"
                     />
@@ -117,7 +117,7 @@ const Inputs = (props) => {
                   id={`${id}-${date}`}
                   type="date"
                   value={date}
-                  onChange={handleChange(id, date)}
+                  onChange={handleChange(id, date, value, true)}
                   margin="normal"
                   className="Input-Date"
                   InputLabelProps={{
