@@ -21,7 +21,7 @@ const Eligibility = props => {
       {keys.map(key => {
         const eligibleOnDay = eligible[key]
         return (
-        <div key> {eligibleOnDay ? <CheckIcon /> : <ClearIcon />} </div>
+        <div key={key}> {eligibleOnDay ? <CheckIcon /> : <ClearIcon />} </div>
         )
       })}
     </Wrapper>
