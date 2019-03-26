@@ -4,10 +4,18 @@ import config from './config';
 const queryOF = (person, handleEligibility) => {
 
   let { firstName, lastName, ...queryPerson } = person;
+  let qurryPerson = {}
+  Object.keys(queryPerson).map(variable => {
+    let queriableVar = {} 
+    queryPerson[variable].map(([date, value]) => {
+      queriableVar[date] = value
+    })
+    qurryPerson[variable] = queriableVar
+  })
 
   let query = {
     persons: {
-      [firstName]: queryPerson
+      [firstName]: qurryPerson
     },
     titled_properties: {
       house: {
