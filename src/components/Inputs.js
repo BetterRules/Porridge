@@ -152,7 +152,7 @@ const changableBooleansWithDates = [
 ]
 const changableBooleans = [
   ['acc_sched_1__loe_more_than_lope', 'Entitled to Higher LOE'],
-  ['acc__earner', 'Is Earner?'],
+  ['acc__earner', 'Is EARNER at date of Injury?'],
   ['acc_part_2__suffered_personal_injury', 'Suffered Injury?'],
   ['acc_part_3__has_lodged_claim', 'Lodged Claim?'],
   ['acc_sched_1__incapacitated_for_6_months', 'Incapacitated at least 6 months'],
