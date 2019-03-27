@@ -8,7 +8,7 @@ const Inputs = (props) => {
   const { person, handleChange } = props
   const Spacer = styled.div`
     margin: 0 4rem;
-  `;
+    `;
 
   return (
     <Fragment>
@@ -37,55 +37,99 @@ const Inputs = (props) => {
             className="Input-Date" // this should have a better classname
         />
         {importantDates.map(([id, label]) => {
-          return (
-          <TextField
-            key={`${person.firstName}-${id}`}
-            id={id}
-            label={label}
-            type="date"
-            value={person[id]}
-            onChange={handleChange(id)}
-            margin="normal"
-            className="Input-Date"
-            InputLabelProps={{
-            shrink: true,
-            }}
-          />
-        )})}
+          return person[id].map(([date, value]) => {
+            return (
+              <TextField
+                key={`${person.firstName}-${id}-${date}`}
+                id={`${id}-${date}`}
+                label={label}
+                type="date"
+                defaultValue={value}
+                onChange={handleChange(id)}
+                margin="normal"
+                className="Input-Date"
+                InputLabelProps={{
+                  shrink: true,
+                }}
+              />
+            )
+          })
+        })}
         {changeableNumbers.map(([id, label]) => {
-          return (
-          <TextField
-            key={`${id} - ${person.firstName}`}
-            id={id}
-            label={label}
-            value={person[id]}
-            onChange={handleChange(id)}
-            type="number"
-            className='Input-Date'
-            InputLabelProps={{
-              shrink: true,
-            }}
-            margin="normal"
-          />
-        )})}
+          return person[id].map(([date, value]) => {
+            return (
+              <TextField
+                key={`${id} - ${date} - ${person.firstName}`}
+                id={id}
+                label={label}
+                value={value}
+                onChange={handleChange(id)}
+                type="number"
+                className='Input-Date'
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                margin="normal"
+              />
+              )
+          })
+        })}
         </div>
         <Spacer>
-          {changableBooleans.map(([id, label]) => {
-            return (
-              <div key={`${id} - ${person.firstName}`} className='Flex-Row'>
-                <FormControlLabel
+        {changableBooleans.map(([id, label]) => {
+            return person[id].map(([date, value]) => {
+              return (
+                <div key={`${date} - ${person.firstName}`} className='Flex-Column'>
+                  <FormControlLabel
+                  label={label}
                   control={
                     <Switch
-                      checked={person[id]}
-                      onChange={handleChange(id)}
-                      value={id}
+                      checked={value}
+                      onChange={handleChange(id, date)}
+                      value={value}
                       color="primary"
                     />
                   }
-                  label={label}
                 />
               </div>
-            )})}
+            )})
+          })}
+        </Spacer>
+        <Spacer>
+          {changableBooleansWithDates.map(([id, label]) => {
+            return person[id].map(([date, value]) => {
+              return (
+                <div key={`${id} - ${date} - ${person.firstName}`} className='Flex-Column'>
+                  <FormControlLabel
+                  label={label}
+                  control={
+                    <Switch
+                      checked={value}
+                      onChange={handleChange(id, date)}
+                      value={value}
+                      color="primary"
+                    />
+                  }
+                />
+                { value
+                ? <TextField
+                  key={`${person.firstName}-${id}-${date}`}
+                  id={`${id}-${date}`}
+                  type="date"
+                  value={date}
+                  onChange={handleChange(id, date, value, true)}
+                  margin="normal"
+                  className="Input-Date"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                />
+                : null
+                }
+
+              </div>
+            )})
+          })}
         </Spacer>
       </form>
     </Fragment>
@@ -100,15 +144,19 @@ const importantDates = [
   ['finish_date_of_full_time_study_training_bridging_18th_birthday', 'End date of study bridging 18th birthday']// ['StartOfStudy', 'Start of full-time study or training'],
 ]
 
-const changableBooleans = [
-  ['acc__earner', 'Is Earner?'],
+const changableBooleansWithDates = [
   ['acc__has_cover', 'Has Cover?'],
+  ['acc_sched_1__engaged_fulltime_study_or_training', 'Engaged Fulltime Study or Training'],
+  ['incapacity_for_employment__corporation_determination', 'ACC determination of incapacity'],
+]
+const changableBooleans = [
+  ['acc_sched_1__loe_more_than_lope', 'Entitled to Higher LOE'],
+  ['acc__earner', 'Is Earner?'],
   ['acc_part_2__suffered_personal_injury', 'Suffered Injury?'],
   ['acc_part_3__has_lodged_claim', 'Lodged Claim?'],
-  ['acc_sched_1__engaged_fulltime_study_or_training', 'Engaged Fulltime Study or Training'],
   ['acc_sched_1__incapacitated_for_6_months', 'Incapacitated at least 6 months'],
-  ['incapacity_for_employment__corporation_determination', 'Incapicity for Employment'],
   ['incapacity_for_employment__by_covered_injury', 'Covered Injury'] //??
+
 ]
 
 const changeableNumbers = [

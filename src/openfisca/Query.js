@@ -1,15 +1,21 @@
 import axios from 'axios';
 import config from './config';
-import _ from 'lodash';
 
 const queryOF = (person, handleEligibility) => {
 
-  let { firstName, lastName, ...queryPerson } = person
+  let { firstName, lastName, ...queryPerson } = person;
+  let qurryPerson = {}
+  Object.keys(queryPerson).map(variable => {
+    let queriableVar = {} 
+    queryPerson[variable].map(([date, value]) => {
+      queriableVar[date] = value
+    })
+    qurryPerson[variable] = queriableVar
+  })
+
   let query = {
     persons: {
-      [firstName]: _.mapValues(queryPerson, (key) => {
-        return {'2018-08-01': key}
-      })
+      [firstName]: qurryPerson
     },
     titled_properties: {
       house: {
@@ -23,12 +29,13 @@ const queryOF = (person, handleEligibility) => {
     }
   }
 
+
   return axios
     .post(config.api_url, query)
     .then(results =>
       results.status && results.status === 200
-      ? handleEligibility(results.data.persons[firstName])
-      : handleEligibility({})
+        ? handleEligibility(results.data.persons[firstName])
+        : handleEligibility({})
     )
     .catch(err => console.log(err))
 }

@@ -13,11 +13,24 @@ const AccordionItem = (props) => {
   const [expanded, expandedPanel] = useState('');
   const [currentPerson, updatePerson] = useState(person)
   const [eligible, setIsEligible] = useState(null);
-  const handleChange = name => event => {
-    const propToUpdate = event.target.type === "checkbox"
-    ? "checked"
-    : "value"
-    updatePerson({...currentPerson, [name]: event.target[propToUpdate] })
+  const backgroundColour = eligible && eligible && eligible[Object.keys(eligible)[0]] ? '#cfc': '#fcc'
+  
+  const handleChange = (name, date, value, dateIsValueToUpdate) => event => {
+    const newDate = dateIsValueToUpdate
+    ? event.target.value
+    : date
+      ? date
+      : 'ETERNITY'
+
+    const newValue = value
+      ? value
+      : event.target.type === "checkbox"
+        ? event.target.checked
+        : event.target.value
+    console.log(value, event.target.value, date)
+    const updatedData = [newDate, newValue]
+  
+    updatePerson({...currentPerson, [name]: [updatedData] })
   };
 
   useEffect(() => {
@@ -32,7 +45,7 @@ const AccordionItem = (props) => {
   };
 
   return (
-    <ExpansionPanel expanded={expanded === currentPerson.firstName} onChange={handleAccordionChange(currentPerson.firstName)}>
+    <ExpansionPanel style={{'backgroundColor': backgroundColour }} expanded={expanded === currentPerson.firstName} onChange={handleAccordionChange(currentPerson.firstName)}>
     <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
       <p>{currentPerson.firstName} {currentPerson.lastName}</p>
       <Eligibility eligible={eligible} />
