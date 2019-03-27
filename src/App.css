@@ -14,6 +14,16 @@ html, body {
 * {
 	box-sizing: border-box;
 }
+.Spacer {
+	margin-right: 2rem;
+	margin-bottom: 1rem;
+	padding: 1rem;
+
+	display: flex;
+	flex-direction: column;
+	width: 24rem;
+	border: 2px solid black
+}
 
 .App {
   padding: 2em;
@@ -25,7 +35,8 @@ html, body {
 
 .Flex-Row {
 	display: flex;
-	flex-direction: row 
+	flex-direction: row;
+	flex-wrap: wrap
 }
 .Flex-Column {
 	display: flex;
@@ -34,7 +45,8 @@ html, body {
 
 .Form-Date {
 	display: flex;
-	flex-direction: row
+	flex-direction: row;
+	flex-wrap: wrap
 }
 .Input-Date {
 	width: 20rem

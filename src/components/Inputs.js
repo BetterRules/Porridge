@@ -2,19 +2,16 @@ import React, { Fragment } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import styled from 'styled-components';
+import Outputs from './Outputs'
 
 const Inputs = (props) => {
-  const { person, handleChange } = props
-  const Spacer = styled.div`
-    margin: 0 4rem;
-    `;
+  const { person, handleChange, eligible, weeklyCompensation } = props
 
   return (
     <Fragment>
-      <form className="Form-Date" noValidate autoComplete="off">
-        <div className="Flex-Column">
-          <TextField
+      <form className='Flex-Row' noValidate autoComplete="off">
+        <div className='Spacer'>
+        <TextField
             id="firstName"
             label="First Name"
             value= {person.firstName}
@@ -63,7 +60,7 @@ const Inputs = (props) => {
                 id={id}
                 label={label}
                 value={value}
-                onChange={handleChange(id)}
+                onChange={handleChange(id, date)}
                 type="number"
                 className='Input-Date'
                 InputLabelProps={{
@@ -75,7 +72,11 @@ const Inputs = (props) => {
           })
         })}
         </div>
-        <Spacer>
+        <Outputs
+          eligible={eligible}
+          weeklyCompensation={weeklyCompensation}
+        />
+        <div className='Spacer'>
         {changableBooleans.map(([id, label]) => {
             return person[id].map(([date, value]) => {
               return (
@@ -94,8 +95,8 @@ const Inputs = (props) => {
               </div>
             )})
           })}
-        </Spacer>
-        <Spacer>
+        </div>
+        <div className='Spacer'>
           {changableBooleansWithDates.map(([id, label]) => {
             return person[id].map(([date, value]) => {
               return (
@@ -130,7 +131,7 @@ const Inputs = (props) => {
               </div>
             )})
           })}
-        </Spacer>
+        </div>
       </form>
     </Fragment>
   );
@@ -151,7 +152,7 @@ const changableBooleansWithDates = [
 ]
 const changableBooleans = [
   ['acc_sched_1__loe_more_than_lope', 'Entitled to Higher LOE'],
-  ['acc__earner', 'Is Earner?'],
+  ['acc__earner', 'Is EARNER at date of Injury?'],
   ['acc_part_2__suffered_personal_injury', 'Suffered Injury?'],
   ['acc_part_3__has_lodged_claim', 'Lodged Claim?'],
   ['acc_sched_1__incapacitated_for_6_months', 'Incapacitated at least 6 months'],
