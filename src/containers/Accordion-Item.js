@@ -12,9 +12,10 @@ const AccordionItem = (props) => {
   const [expanded, expandedPanel] = useState('');
   const [currentPerson, updatePerson] = useState(person)
   const [eligible, setIsEligible] = useState(null);
+  const [age, setAge] = useState(null);
   const [weeklyCompensation, setWeeklyCompensation] = useState(null);
   const backgroundColour = eligible && eligible && eligible[Object.keys(eligible)[0]] ? '#cfc': '#fcc'
-  
+
   const handleChange = (name, date, value, dateIsValueToUpdate) => event => {
     const newDate = dateIsValueToUpdate
     ? event.target.value
@@ -28,34 +29,38 @@ const AccordionItem = (props) => {
         ? event.target.checked
         : event.target.value
     const updatedData = [newDate, newValue]
-  
+
     updatePerson({...currentPerson, [name]: [updatedData] })
   };
 
   useEffect(() => {
     function handleEligibility(res) {
+      setAge(res.age)
       setIsEligible(res.acc_sched_1__lope_eligible)
       setWeeklyCompensation(res.acc_sched_1__lope_weekly_compensation)
     }
     QueryOF(currentPerson, handleEligibility)
   }, [currentPerson]);
-  
+
   const handleAccordionChange = panel => (e, expanded) => {
       expanded ? expandedPanel(panel) : expandedPanel(false)
   };
 
   return (
     <ExpansionPanel style={{'backgroundColor': backgroundColour }} expanded={expanded === currentPerson.firstName} onChange={handleAccordionChange(currentPerson.firstName)}>
-    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-      <p>{currentPerson.firstName} {currentPerson.lastName}</p>
-          </ExpansionPanelSummary>
+      <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+        <p>{currentPerson.firstName} {currentPerson.lastName}</p>
+      </ExpansionPanelSummary>
     <ExpansionPanelDetails className="Form-Date">
         <Inputs
           person={currentPerson}
           handleChange={handleChange}
           eligible={eligible}
           weeklyCompensation={weeklyCompensation}
+          age={age}
         />
+        {console.log('Age', age)}
+        {/* {console.log('blaaaaa', person)} */}
       </ExpansionPanelDetails>
     </ExpansionPanel>
   );

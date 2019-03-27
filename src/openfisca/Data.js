@@ -67,7 +67,7 @@ const DATA = [
       ['2020-08-06', null]
     ],
   },
-  // Incapacity began at 25 (2025-06-01), not eligible on 2025-09-01, eligible in 2026-01-02 
+  // Incapacity began at 25 (2025-06-01), not eligible on 2025-09-01, eligible in 2026-01-02
   {
     firstName: 'Sensitive',
     lastName: 'Claiment',
@@ -380,6 +380,9 @@ const DATA = [
       ['2020-01-01', null],
       ['2021-01-01', null],
       ['2022-01-01', null]
+    ],
+    age: [
+      ['2020-09-06', null]
     ]
   },
   // Simple test for LOPE eligibility with entitlement calculation
@@ -446,7 +449,10 @@ const DATA = [
       ['2020-01-01', null],
       ['2021-01-01', null],
       ['2022-01-01', null]
-    ]
+    ],
+    age: [
+      ['2020-09-06', null]
+    ],
   },
 ]
 

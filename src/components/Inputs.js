@@ -4,14 +4,19 @@ import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Outputs from './Outputs'
 
+function isOlderThan18(age, label) {
+  console.log('over', label)
+  return age !== null && age[Object.keys(age)[0]] > 18 && label === 'End date of study bridging 18th birthday'
+}
+
 const Inputs = (props) => {
-  const { person, handleChange, eligible, weeklyCompensation } = props
+  const { person, handleChange, eligible, weeklyCompensation, age } = props
 
   return (
     <Fragment>
       <form className='Flex-Row' noValidate autoComplete="off">
         <div className='Spacer'>
-        <TextField
+          <TextField
             id="firstName"
             label="First Name"
             value= {person.firstName}
@@ -21,8 +26,8 @@ const Inputs = (props) => {
               readOnly: true,
             }}
             className="Input-Date" // this should have a better classname
-        />
-        <TextField
+          />
+          <TextField
             id="lastName"
             label="Last Name"
             value= {person.lastName}
@@ -32,23 +37,25 @@ const Inputs = (props) => {
               readOnly: true,
             }}
             className="Input-Date" // this should have a better classname
-        />
+          />
         {importantDates.map(([id, label]) => {
           return person[id].map(([date, value]) => {
             return (
-              <TextField
-                key={`${person.firstName}-${id}-${date}`}
-                id={`${id}-${date}`}
-                label={label}
-                type="date"
-                defaultValue={value}
-                onChange={handleChange(id)}
-                margin="normal"
-                className="Input-Date"
-                InputLabelProps={{
-                  shrink: true,
-                }}
-              />
+              <div>
+                <TextField
+                  key={`${person.firstName}-${id}-${date}`}
+                  id={`${id}-${date}`}
+                  label={label}
+                  type="date"
+                  defaultValue={value}
+                  onChange={handleChange(id)}
+                  margin="normal"
+                  className={`Input-Date ${isOlderThan18(age, label) && 'hide'}`}
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                />
+              </div>
             )
           })
         })}
