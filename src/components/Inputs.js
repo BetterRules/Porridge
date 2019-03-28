@@ -60,7 +60,7 @@ const Inputs = (props) => {
                   defaultValue={value}
                   onChange={handleChange(id)}
                   margin="normal"
-                  className={`Input-Date ${olderThan18AtTimeOfInjury(person, id) && ' hide'}`}
+                  className={`Input-Date ${olderThan18AtTimeOfInjury(person, id) && 'hide'}`}
                   InputLabelProps={{
                     shrink: true,
                   }}
