@@ -18,10 +18,10 @@ const DATA = [
       ['ETERNITY', true]
     ],
     date_of_birth: [
-      ['ETERNITY', '2000-01-01']
+      ['ETERNITY', '1982-08-28']
     ],
     date_of_injury: [
-      ['ETERNITY', '2000-01-01']
+      ['ETERNITY', '2018-01-01']
     ],
     finish_date_of_full_time_study_training_bridging_18th_birthday: [
       ['ETERNITY', '2000-01-01']

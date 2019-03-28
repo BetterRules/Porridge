@@ -4,9 +4,19 @@ import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Outputs from './Outputs'
 
-function isOlderThan18(age, label) {
-  console.log('over', label)
-  return age !== null && age[Object.keys(age)[0]] > 18 && label === 'End date of study bridging 18th birthday'
+function olderThan18AtTimeOfInjury(person, id) {
+  return ageAtTimeOfInjury(person.date_of_birth, person.date_of_injury) > 18 && id === 'finish_date_of_full_time_study_training_bridging_18th_birthday'
+}
+
+function ageAtTimeOfInjury(birthday, injuryDate) {
+  var dateOfInjury = new Date(injuryDate);
+  var birthDate = new Date(birthday);
+  var age = dateOfInjury.getFullYear() - birthDate.getFullYear();
+  var m = dateOfInjury.getMonth() - birthDate.getMonth();
+  if (m < 0 || (m === 0 && dateOfInjury.getDate() < birthDate.getDate())) {
+    age--;
+  }
+  return age;
 }
 
 const Inputs = (props) => {
@@ -14,6 +24,7 @@ const Inputs = (props) => {
 
   return (
     <Fragment>
+
       <form className='Flex-Row' noValidate autoComplete="off">
         <div className='Spacer'>
           <TextField
@@ -38,10 +49,9 @@ const Inputs = (props) => {
             }}
             className="Input-Date" // this should have a better classname
           />
-        {importantDates.map(([id, label]) => {
-          return person[id].map(([date, value]) => {
-            return (
-              <div>
+          {importantDates.map(([id, label]) => {
+            return person[id].map(([date, value]) => {
+              return (
                 <TextField
                   key={`${person.firstName}-${id}-${date}`}
                   id={`${id}-${date}`}
@@ -50,57 +60,56 @@ const Inputs = (props) => {
                   defaultValue={value}
                   onChange={handleChange(id)}
                   margin="normal"
-                  className={`Input-Date ${isOlderThan18(age, label) && 'hide'}`}
+                  className={`Input-Date ${olderThan18AtTimeOfInjury(person, id) && ' hide'}`}
                   InputLabelProps={{
                     shrink: true,
                   }}
                 />
-              </div>
-            )
-          })
-        })}
-        {changeableNumbers.map(([id, label]) => {
-          return person[id].map(([date, value]) => {
-            return (
-              <TextField
-                key={`${id} - ${date} - ${person.firstName}`}
-                id={id}
-                label={label}
-                value={value}
-                onChange={handleChange(id, date)}
-                type="number"
-                className='Input-Date'
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                margin="normal"
-              />
               )
-          })
-        })}
+            })
+          })}
+          {changeableNumbers.map(([id, label]) => {
+            return person[id].map(([date, value]) => {
+              return (
+                <TextField
+                  key={`${id} - ${date} - ${person.firstName}`}
+                  id={id}
+                  label={label}
+                  value={value}
+                  onChange={handleChange(id, date)}
+                  type="number"
+                  className='Input-Date'
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  margin="normal"
+                />
+              )
+            })
+          })}
         </div>
         <Outputs
           eligible={eligible}
           weeklyCompensation={weeklyCompensation}
         />
         <div className='Spacer'>
-        {changableBooleans.map(([id, label]) => {
+          {changableBooleans.map(([id, label]) => {
             return person[id].map(([date, value]) => {
               return (
                 <div key={`${date} - ${person.firstName}`} className='Flex-Column'>
                   <FormControlLabel
-                  label={label}
-                  control={
-                    <Switch
-                      checked={value}
-                      onChange={handleChange(id, date)}
-                      value={value}
-                      color="primary"
-                    />
-                  }
-                />
-              </div>
-            )})
+                    label={label}
+                    control={
+                      <Switch
+                        checked={value}
+                        onChange={handleChange(id, date)}
+                        value={value}
+                        color="primary"
+                      />
+                    }
+                  />
+                </div>
+              )})
           })}
         </div>
         <div className='Spacer'>
@@ -109,34 +118,33 @@ const Inputs = (props) => {
               return (
                 <div key={`${id} - ${date} - ${person.firstName}`} className='Flex-Column'>
                   <FormControlLabel
-                  label={label}
-                  control={
-                    <Switch
-                      checked={value}
-                      onChange={handleChange(id, date)}
-                      value={value}
-                      color="primary"
+                    label={label}
+                    control={
+                      <Switch
+                        checked={value}
+                        onChange={handleChange(id, date)}
+                        value={value}
+                        color="primary"
+                      />
+                    }
+                  />
+                  { value
+                    ? <TextField
+                      key={`${person.firstName}-${id}-${date}`}
+                      id={`${id}-${date}`}
+                      type="date"
+                      value={date}
+                      onChange={handleChange(id, date, value, true)}
+                      margin="normal"
+                      className="Input-Date"
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
                     />
+                    : null
                   }
-                />
-                { value
-                ? <TextField
-                  key={`${person.firstName}-${id}-${date}`}
-                  id={`${id}-${date}`}
-                  type="date"
-                  value={date}
-                  onChange={handleChange(id, date, value, true)}
-                  margin="normal"
-                  className="Input-Date"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                />
-                : null
-                }
-
-              </div>
-            )})
+                </div>
+              )})
           })}
         </div>
       </form>
