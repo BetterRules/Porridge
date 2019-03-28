@@ -12,7 +12,6 @@ const AccordionItem = (props) => {
   const [expanded, expandedPanel] = useState('');
   const [currentPerson, updatePerson] = useState(person)
   const [eligible, setIsEligible] = useState(null);
-  const [age, setAge] = useState(null);
   const [weeklyCompensation, setWeeklyCompensation] = useState(null);
   const backgroundColour = eligible && eligible && eligible[Object.keys(eligible)[0]] ? '#cfc': '#fcc'
 
@@ -35,7 +34,6 @@ const AccordionItem = (props) => {
 
   useEffect(() => {
     function handleEligibility(res) {
-      setAge(res.age)
       setIsEligible(res.acc_sched_1__lope_eligible)
       setWeeklyCompensation(res.acc_sched_1__lope_weekly_compensation)
     }
@@ -51,16 +49,13 @@ const AccordionItem = (props) => {
       <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
         <p>{currentPerson.firstName} {currentPerson.lastName}</p>
       </ExpansionPanelSummary>
-    <ExpansionPanelDetails className="Form-Date">
+      <ExpansionPanelDetails className="Form-Date">
         <Inputs
           person={currentPerson}
           handleChange={handleChange}
           eligible={eligible}
           weeklyCompensation={weeklyCompensation}
-          age={age}
         />
-        {console.log('Age', age)}
-        {/* {console.log('blaaaaa', person)} */}
       </ExpansionPanelDetails>
     </ExpansionPanel>
   );

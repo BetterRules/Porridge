@@ -20,7 +20,7 @@ function ageAtTimeOfInjury(birthday, injuryDate) {
 }
 
 const Inputs = (props) => {
-  const { person, handleChange, eligible, weeklyCompensation, age } = props
+  const { person, handleChange, eligible, weeklyCompensation } = props
 
   return (
     <Fragment>
