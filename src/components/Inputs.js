@@ -11,89 +11,89 @@ const Inputs = (props) => {
     <Fragment>
       <form className='Flex-Row' noValidate autoComplete="off">
         <div className='Spacer'>
-        <TextField
+          <TextField
             id="firstName"
             label="First Name"
             value= {person.firstName}
-            onChange={handleChange("firstName")}
+            onChange={handleChange('firstName')}
             margin="normal"
             InputProps={{
               readOnly: true,
             }}
             className="Input-Date" // this should have a better classname
-        />
-        <TextField
+          />
+          <TextField
             id="lastName"
             label="Last Name"
             value= {person.lastName}
-            onChange={handleChange("firstName")}
+            onChange={handleChange('firstName')}
             margin="normal"
             InputProps={{
               readOnly: true,
             }}
             className="Input-Date" // this should have a better classname
-        />
-        {importantDates.map(([id, label]) => {
-          return person[id].map(([date, value]) => {
-            return (
-              <TextField
-                key={`${person.firstName}-${id}-${date}`}
-                id={`${id}-${date}`}
-                label={label}
-                type="date"
-                defaultValue={value}
-                onChange={handleChange(id)}
-                margin="normal"
-                className="Input-Date"
-                InputLabelProps={{
-                  shrink: true,
-                }}
-              />
-            )
-          })
-        })}
-        {changeableNumbers.map(([id, label]) => {
-          return person[id].map(([date, value]) => {
-            return (
-              <TextField
-                key={`${id} - ${date} - ${person.firstName}`}
-                id={id}
-                label={label}
-                value={value}
-                onChange={handleChange(id, date)}
-                type="number"
-                className='Input-Date'
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                margin="normal"
-              />
+          />
+          {importantDates.map(([id, label]) => {
+            return person[id].map(([date, value]) => {
+              return (
+                <TextField
+                  key={`${person.firstName}-${id}-${date}`}
+                  id={`${id}-${date}`}
+                  label={label}
+                  type="date"
+                  defaultValue={value}
+                  onChange={handleChange(id)}
+                  margin="normal"
+                  className="Input-Date"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                />
               )
-          })
-        })}
+            })
+          })}
+          {changeableNumbers.map(([id, label]) => {
+            return person[id].map(([date, value]) => {
+              return (
+                <TextField
+                  key={`${id} - ${date} - ${person.firstName}`}
+                  id={id}
+                  label={label}
+                  value={value}
+                  onChange={handleChange(id, date)}
+                  type="number"
+                  className='Input-Date'
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  margin="normal"
+                />
+              )
+            })
+          })}
         </div>
         <Outputs
           eligible={eligible}
           weeklyCompensation={weeklyCompensation}
         />
         <div className='Spacer'>
-        {changableBooleans.map(([id, label]) => {
+          {changableBooleans.map(([id, label]) => {
             return person[id].map(([date, value]) => {
               return (
                 <div key={`${date} - ${person.firstName}`} className='Flex-Column'>
                   <FormControlLabel
-                  label={label}
-                  control={
-                    <Switch
-                      checked={value}
-                      onChange={handleChange(id, date)}
-                      value={value}
-                      color="primary"
-                    />
-                  }
-                />
-              </div>
-            )})
+                    label={label}
+                    control={
+                      <Switch
+                        checked={value}
+                        onChange={handleChange(id, date)}
+                        value={value}
+                        color="primary"
+                      />
+                    }
+                  />
+                </div>
+              )})
           })}
         </div>
         <div className='Spacer'>
@@ -134,7 +134,6 @@ const Inputs = (props) => {
         <div className='Spacer'>
           {Object.values(changableBooleansWithBoolean).map(item=> {
             return person[item.id].map(([date, value]) => {
-
               return (
                 <Fragment>
                   <FormControlLabel
@@ -183,10 +182,6 @@ const changableBooleansWithDates = [
   ['incapacity_for_employment__corporation_determination', 'ACC determination of incapacity'],
 ]
 
-// const changableBooleansWithBoolean = [
-//   ['acc__earner', 'Is EARNER at date of Injury?'],
-//   // ['acc_sched_1__loe_more_than_lope', 'Entitled to Higher LOE']
-// ]
 const changableBooleansWithBoolean = {
   acc_earner: {
     label: 'Is EARNER at date of Injury?',
@@ -199,8 +194,6 @@ const changableBooleansWithBoolean = {
 }
 
 const changableBooleans = [
-  // ['acc_sched_1__loe_more_than_lope', 'Entitled to Higher LOE'],
-  // ['acc__earner', 'Is EARNER at date of Injury?'],
   ['acc_part_2__suffered_personal_injury', 'Suffered Injury?'],
   ['acc_part_3__has_lodged_claim', 'Lodged Claim?'],
   ['acc_sched_1__incapacitated_for_6_months', 'Incapacitated at least 6 months'],
