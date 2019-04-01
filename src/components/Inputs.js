@@ -102,35 +102,72 @@ const Inputs = (props) => {
               return (
                 <div key={`${id} - ${date} - ${person.firstName}`} className='Flex-Column'>
                   <FormControlLabel
-                  label={label}
-                  control={
-                    <Switch
-                      checked={value}
-                      onChange={handleChange(id, date)}
-                      value={value}
-                      color="primary"
+                    label={label}
+                    control={
+                      <Switch
+                        checked={value}
+                        onChange={handleChange(id, date)}
+                        value={value}
+                        color="primary"
+                      />
+                    }
+                  />
+                  { value
+                    ? <TextField
+                      key={`${person.firstName}-${id}-${date}`}
+                      id={`${id}-${date}`}
+                      type="date"
+                      value={date}
+                      onChange={handleChange(id, date, value, true)}
+                      margin="normal"
+                      className="Input-Date"
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
                     />
+                    : null
                   }
-                />
-                { value
-                ? <TextField
-                  key={`${person.firstName}-${id}-${date}`}
-                  id={`${id}-${date}`}
-                  type="date"
-                  value={date}
-                  onChange={handleChange(id, date, value, true)}
-                  margin="normal"
-                  className="Input-Date"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                />
-                : null
-                }
-
-              </div>
-            )})
+                </div>
+              )})
           })}
+        </div>
+        <div className='Spacer'>
+          {Object.values(changableBooleansWithBoolean).map(item=> {
+            console.log('item.label', item)
+            console.log('item.toggled', item.toggled.label)
+            console.log('item.toggled.id', item.toggled.id)
+            console.log(person[item.toggled.id])
+            return person[item.id].map(([date, value]) => {
+
+              return (
+                <Fragment>
+                  <FormControlLabel
+                    label={item.label}
+                    control={
+                      <Switch
+                        checked={value}
+                        onChange={handleChange(item.id, date)}
+                        value={value}
+                        color="primary"
+                      />
+                    }
+                  />
+                  {/* TODO: need to update the value for child toggle */}
+                  {value && <FormControlLabel
+                    label={item.toggled.label}
+                    control={
+                      <Switch
+                        checked={value}
+                        onChange={handleChange(item.toggled.id, date)}
+                        value={value}
+                        color="primary"
+                      />
+                    }
+                  />}
+                </Fragment>
+              );
+
+            })})}
         </div>
       </form>
     </Fragment>
@@ -150,9 +187,25 @@ const changableBooleansWithDates = [
   ['acc_sched_1__engaged_fulltime_study_or_training', 'Engaged Fulltime Study or Training'],
   ['incapacity_for_employment__corporation_determination', 'ACC determination of incapacity'],
 ]
+
+// const changableBooleansWithBoolean = [
+//   ['acc__earner', 'Is EARNER at date of Injury?'],
+//   // ['acc_sched_1__loe_more_than_lope', 'Entitled to Higher LOE']
+// ]
+const changableBooleansWithBoolean = {
+  acc_earner: {
+    label: 'Is EARNER at date of Injury?',
+    id: 'acc__earner',
+    toggled: {
+      label: 'Entitled to Higher LOE',
+      id: 'acc_sched_1__loe_more_than_lope'
+    }
+  }
+}
+
 const changableBooleans = [
-  ['acc_sched_1__loe_more_than_lope', 'Entitled to Higher LOE'],
-  ['acc__earner', 'Is EARNER at date of Injury?'],
+  // ['acc_sched_1__loe_more_than_lope', 'Entitled to Higher LOE'],
+  // ['acc__earner', 'Is EARNER at date of Injury?'],
   ['acc_part_2__suffered_personal_injury', 'Suffered Injury?'],
   ['acc_part_3__has_lodged_claim', 'Lodged Claim?'],
   ['acc_sched_1__incapacitated_for_6_months', 'Incapacitated at least 6 months'],
