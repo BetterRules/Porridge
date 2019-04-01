@@ -133,10 +133,10 @@ const Inputs = (props) => {
         </div>
         <div className='Spacer'>
           {Object.values(changableBooleansWithBoolean).map(item=> {
-            console.log('item.label', item)
-            console.log('item.toggled', item.toggled.label)
-            console.log('item.toggled.id', item.toggled.id)
-            console.log(person[item.toggled.id])
+            // console.log('item.label', item)
+            // console.log('item.toggled', item.toggled.label)
+            // console.log('item.toggled.id', item.toggled.id)
+            // console.log(person[item.toggled.id])
             return person[item.id].map(([date, value]) => {
 
               return (
@@ -152,14 +152,13 @@ const Inputs = (props) => {
                       />
                     }
                   />
-                  {/* TODO: need to update the value for child toggle */}
                   {value && <FormControlLabel
                     label={item.toggled.label}
                     control={
                       <Switch
-                        checked={value}
+                        checked={value && null}
                         onChange={handleChange(item.toggled.id, date)}
-                        value={value}
+                        value={value && null}
                         color="primary"
                       />
                     }
