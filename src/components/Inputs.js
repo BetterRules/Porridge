@@ -133,10 +133,6 @@ const Inputs = (props) => {
         </div>
         <div className='Spacer'>
           {Object.values(changableBooleansWithBoolean).map(item=> {
-            // console.log('item.label', item)
-            // console.log('item.toggled', item.toggled.label)
-            // console.log('item.toggled.id', item.toggled.id)
-            // console.log(person[item.toggled.id])
             return person[item.id].map(([date, value]) => {
 
               return (
