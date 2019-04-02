@@ -135,7 +135,7 @@ const Inputs = (props) => {
           {Object.values(changableBooleansWithBoolean).map(item=> {
             return person[item.id].map(([date, value]) => {
               return (
-                <Fragment>
+                <Fragment key={`${item.id} - ${date} - ${person.firstName}`}>
                   <FormControlLabel
                     label={item.label}
                     control={
@@ -195,7 +195,7 @@ const changableBooleansWithBoolean = {
 
 const changableBooleans = [
   ['acc_part_2__suffered_personal_injury', 'Suffered Injury?'],
-  ['acc_part_3__has_lodged_claim', 'Lodged Claim?'],
+  ['acc__part_3__has_lodged_claim', 'Lodged Claim?'],
   ['acc_sched_1__incapacitated_for_6_months', 'Incapacitated at least 6 months'],
   ['incapacity_for_employment__by_covered_injury', 'Covered Injury'] //??
 
