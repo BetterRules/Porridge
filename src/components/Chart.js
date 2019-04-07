@@ -1,10 +1,11 @@
 import React from 'react';
 import Plot from 'react-plotly.js';
 import _ from 'lodash';
+import groupAndCount from '../utilities/groupAndCount';
 
 const Chart = props => {
 
-  var data = [
+  var dataSet = [
     {'age': 7, 'seriousness':3.8},
     {'age': 16, 'seriousness':4.3},
     {'age': 18, 'seriousness':1.5},
@@ -43,36 +44,7 @@ const Chart = props => {
     {'age': 19, 'seriousness': 3.4},
   ];
 
-
-  var agesProvided = _(data)
-    .groupBy('age')
-    .map((item, itemId) => {
-      var arr = [];
-      arr.push(itemId * 1)
-      return arr[0]
-    }).value()
-
-  var minAges = _.min(agesProvided);
-  var agesMissing = [];
-
-  for (var i = 0; i < minAges; i++) {
-    agesMissing.push(i);
-  }
-
-  var agesObj = _(data)
-    .groupBy('age')
-    .map((item, itemId) => {
-      var obj = {};
-      obj[itemId] = _.countBy(item, 'age');
-      return obj
-    }).value();
-
-
-  agesMissing.forEach(age => {
-    agesObj[(agesObj.length + 1)] = {[age]: {[age]: 0}};
-  })
-
-  console.log(agesObj)
+  console.log(groupAndCount(dataSet, 'age'))
 
   var trace1 = {
     x: _.range((props.selectedAge + 1) * 1),

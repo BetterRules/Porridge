@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import Eligibility from '../components/Eligibility'
 import WeeklyCompensation from '../components/WeeklyCompensation';
 
@@ -7,7 +7,7 @@ const Outputs = (props) => {
   return (
     <div className='Spacer'>
       <div className='Flex-Row'>
-        <Eligibility eligible={eligible} />  
+        <Eligibility eligible={eligible} />
         <WeeklyCompensation weeklyCompensation={weeklyCompensation} />
       </div>
     </div>
