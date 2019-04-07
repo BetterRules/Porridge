@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from 'react'
+import React, { useState } from 'react'
 
 import Card from '@material-ui/core/Card';
 import Chart from '../components/Chart';
