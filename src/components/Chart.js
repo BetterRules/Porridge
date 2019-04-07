@@ -46,11 +46,11 @@ const Chart = props => {
 
   var agesProvided = _(data)
     .groupBy('age')
-    .map(function(item, itemId) {
+    .map((item, itemId) => {
       var arr = [];
       arr.push(itemId * 1)
       return arr[0]
-    }).value();
+    }).value()
 
   var minAges = _.min(agesProvided);
   var agesMissing = [];
