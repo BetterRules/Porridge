@@ -5,46 +5,7 @@ import groupAndCount from '../utilities/groupAndCount';
 
 const Chart = props => {
 
-  var dataSet = [
-    {'age': 7, 'seriousness':3.8},
-    {'age': 16, 'seriousness':4.3},
-    {'age': 18, 'seriousness':1.5},
-    {'age': 19, 'seriousness':3.2},
-    {'age': 17, 'seriousness':2.8},
-    {'age': 17, 'seriousness':3.5},
-    {'age': 11, 'seriousness':3.6},
-    {'age': 17, 'seriousness':2.4},
-    {'age': 14, 'seriousness': 4.1},
-    {'age': 5, 'seriousness': 3.5},
-    {'age': 8, 'seriousness': 3.2},
-    {'age': 13, 'seriousness': 2.3},
-    {'age': 19, 'seriousness': 2.1},
-    {'age': 21, 'seriousness': 2.1},
-    {'age': 17, 'seriousness': 3.3},
-    {'age': 12, 'seriousness': 1.9},
-    {'age': 19, 'seriousness': 1.6},
-    {'age': 17, 'seriousness': 1},
-    {'age': 18, 'seriousness': 2.4},
-    {'age': 11, 'seriousness': 3.7},
-    {'age': 12, 'seriousness': 3.2},
-    {'age': 8, 'seriousness': 2.8},
-    {'age': 16, 'seriousness': 1.7},
-    {'age': 17, 'seriousness': 2.8},
-    {'age': 19, 'seriousness': 3.7},
-    {'age': 10, 'seriousness': 3},
-    {'age': 17, 'seriousness': 2.9},
-    {'age': 13, 'seriousness': 1.8},
-    {'age': 15, 'seriousness': 3.5},
-    {'age': 7, 'seriousness': 2.6},
-    {'age': 15, 'seriousness': 3.5},
-    {'age': 4, 'seriousness': 3.5},
-    {'age': 19, 'seriousness': 2.5},
-    {'age': 10, 'seriousness': 3.5},
-    {'age': 20, 'seriousness': 3},
-    {'age': 19, 'seriousness': 3.4},
-  ];
-
-  console.log(groupAndCount(dataSet, 'age'))
+  console.log(groupAndCount(props.data, 'age'))
 
   var trace1 = {
     x: _.range((props.selectedAge + 1) * 1),

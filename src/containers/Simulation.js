@@ -38,12 +38,9 @@ const Simulation = () => {
           <option>21</option>
           <option>22</option>
         </select>
-        {DataSet.map(() => {
-
-          return <div style={{padding:'1.5em'}}>
-            <Chart selectedAge={age1} />
-          </div>
-        })}
+        <div style={{padding:'1.5em'}}>
+          <Chart data={DataSet} selectedAge={age1} />
+        </div>
       </Card>
     </div>
   );
