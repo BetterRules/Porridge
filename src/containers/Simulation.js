@@ -4,86 +4,44 @@ import Card from '@material-ui/core/Card';
 import Chart from '../components/Chart';
 import DataSet from '../charts/Data';
 
-import _ from 'lodash';
+const Simulation = () => {
 
-const Simulation = (props) => {
-
-  var data = [
-    {'age': 7, 'seriousness':3.8},
-    {'age': 16, 'seriousness':4.3},
-    {'age': 18, 'seriousness':1.5},
-    {'age': 19, 'seriousness':3.2},
-    {'age': 17, 'seriousness':2.8},
-    {'age': 17, 'seriousness':3.5},
-    {'age': 11, 'seriousness':3.6},
-    {'age': 17, 'seriousness':2.4},
-    {'age': 14, 'seriousness': 4.1},
-    {'age': 5, 'seriousness': 3.5},
-    {'age': 8, 'seriousness': 3.2},
-    {'age': 13, 'seriousness': 2.3},
-    {'age': 19, 'seriousness': 2.1},
-    {'age': 21, 'seriousness': 2.1},
-    {'age': 17, 'seriousness': 3.3},
-    {'age': 12, 'seriousness': 1.9},
-    {'age': 19, 'seriousness': 1.6},
-    {'age': 17, 'seriousness': 1},
-    {'age': 18, 'seriousness': 2.4},
-    {'age': 11, 'seriousness': 3.7},
-    {'age': 12, 'seriousness': 3.2},
-    {'age': 8, 'seriousness': 2.8},
-    {'age': 16, 'seriousness': 1.7},
-    {'age': 17, 'seriousness': 2.8},
-    {'age': 19, 'seriousness': 3.7},
-    {'age': 10, 'seriousness': 3},
-    {'age': 17, 'seriousness': 2.9},
-    {'age': 13, 'seriousness': 1.8},
-    {'age': 15, 'seriousness': 3.5},
-    {'age': 7, 'seriousness': 2.6},
-    {'age': 15, 'seriousness': 3.5},
-    {'age': 4, 'seriousness': 3.5},
-    {'age': 19, 'seriousness': 2.5},
-    {'age': 10, 'seriousness': 3.5},
-    {'age': 20, 'seriousness': 3},
-    {'age': 19, 'seriousness': 3.4},
-  ];
-
-  var groupAge = _.groupBy(data, 'age')
-  var groupSeriousness = _.groupBy(data, 'seriousness');
-
-  var ages = _.map(_.keys(groupAge), function(e) {
-    return _.reduce(groupAge[e], function(r, o) {
-      return r.count += +o.seriousness, r
-    }, {age: e, count: 0, sum: groupAge[e].length})
-  })
-
-  var seriousness = _.map(_.keys(groupSeriousness), function(e) {
-    return _.reduce(groupSeriousness[e], function(r, o) {
-      return r.count += +o.seriousness, r
-    }, {age: e, count: 0, sum: groupSeriousness[e].length})
-  })
-
-  //const [currentPerson, updatePerson] = useState(person)
-  const [age1, setAge1] = useState(0);
-
-  useEffect(() => {
-    // console.log(age1)
-  });
-
+  const [age1, setAge1] = useState(18);
 
 
   return (
     <div>
       <Card>
         <h2>Policy Development Simulator</h2>
+        <select onChange={e => setAge1(e.target.value)}>
+          <option>0</option>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+          <option>6</option>
+          <option>7</option>
+          <option>8</option>
+          <option>9</option>
+          <option>10</option>
+          <option>11</option>
+          <option>12</option>
+          <option>13</option>
+          <option>14</option>
+          <option>15</option>
+          <option>16</option>
+          <option>17</option>
+          <option selected>18</option>
+          <option>19</option>
+          <option>20</option>
+          <option>21</option>
+          <option>22</option>
+        </select>
+        {DataSet.map(() => {
 
-        {DataSet.map(item => {
-
-          // console.log(item)
           return <div style={{padding:'1.5em'}}>
-
-            {/* <h3>{item.chart}</h3> */}
-            <Chart ages={ages} seriousness={seriousness} selectedAge={age1} />
-            {/* {console.log('banana', item)} */}
+            <Chart selectedAge={age1} />
           </div>
         })}
       </Card>

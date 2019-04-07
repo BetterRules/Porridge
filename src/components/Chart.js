@@ -1,145 +1,95 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import Plot from 'react-plotly.js';
+import _ from 'lodash';
 
-// const Chart = props => {
-//   console.log(props)
-//   // console.log('HEEERE', props.ages)
-//   let ages = [];
-//   let countAges = [];
-//   let seriousness = [];
+const Chart = props => {
 
-//   // console.log('state', this.props.state)
-
-//   Object.values(props.ages).map(item => {
-//     ages.push(item.age)
-//     countAges.push(item.sum)
-//     // seriousness.push(item.)
-//   })
-
-//   useEffect(() => {
-//     console.log(props.selectedAge)
-//   });
-
-//   console.log('selected age in chart', props.selectedAge)
-//   var sensitive1 = {
-//     x: ages,
-//     y: countAges,
-//     name: 'Sensitive',
-//     type: 'bar'
-//   };
-
-//   var sensitive2 = {
-//     x: props.selectedAge,
-//     y: countAges,
-//     name: 'Sensitive',
-//     type: 'bar'
-//   };
-
-//   var trace3 = {
-//     x: ages,
-//     y: countAges,
-//     name: 'Sensitive',
-//     type: 'bar'
-//   };
-
-//   var trace4 = {
-//     x: ages,
-//     y: countAges,
-//     name: 'Sensitive',
-//     type: 'bar'
-//   };
+  var data = [
+    {'age': 7, 'seriousness':3.8},
+    {'age': 16, 'seriousness':4.3},
+    {'age': 18, 'seriousness':1.5},
+    {'age': 19, 'seriousness':3.2},
+    {'age': 17, 'seriousness':2.8},
+    {'age': 17, 'seriousness':3.5},
+    {'age': 11, 'seriousness':3.6},
+    {'age': 17, 'seriousness':2.4},
+    {'age': 14, 'seriousness': 4.1},
+    {'age': 5, 'seriousness': 3.5},
+    {'age': 8, 'seriousness': 3.2},
+    {'age': 13, 'seriousness': 2.3},
+    {'age': 19, 'seriousness': 2.1},
+    {'age': 21, 'seriousness': 2.1},
+    {'age': 17, 'seriousness': 3.3},
+    {'age': 12, 'seriousness': 1.9},
+    {'age': 19, 'seriousness': 1.6},
+    {'age': 17, 'seriousness': 1},
+    {'age': 18, 'seriousness': 2.4},
+    {'age': 11, 'seriousness': 3.7},
+    {'age': 12, 'seriousness': 3.2},
+    {'age': 8, 'seriousness': 2.8},
+    {'age': 16, 'seriousness': 1.7},
+    {'age': 17, 'seriousness': 2.8},
+    {'age': 19, 'seriousness': 3.7},
+    {'age': 10, 'seriousness': 3},
+    {'age': 17, 'seriousness': 2.9},
+    {'age': 13, 'seriousness': 1.8},
+    {'age': 15, 'seriousness': 3.5},
+    {'age': 7, 'seriousness': 2.6},
+    {'age': 15, 'seriousness': 3.5},
+    {'age': 4, 'seriousness': 3.5},
+    {'age': 19, 'seriousness': 2.5},
+    {'age': 10, 'seriousness': 3.5},
+    {'age': 20, 'seriousness': 3},
+    {'age': 19, 'seriousness': 3.4},
+  ];
 
 
-//   return (
-//     <div>
-//       <Plot
-//         onUpdate={(figure) => this.setState(props.selectedAge)}
-//         data={[
-//           sensitive1, sensitive2
-//         ]}
-//         layout={ {barmode: 'group', title: 'Sensitive/Treatment'} }
-//       />
-//       <Plot
-//         onUpdate={(figure) => this.setState(figure)}
-//         data={[
-//           trace3, trace4
-//         ]}
-//         layout={ {barmode: 'group', title: 'Seriousness'} }
-//       />
-//     </div>
-//   );
-// }
+  var agesProvided = _(data)
+    .groupBy('age')
+    .map(function(item, itemId) {
+      var arr = [];
+      arr.push(itemId * 1)
+      return arr[0]
+    }).value();
 
-// export default Chart;
+  var minAges = _.min(agesProvided);
+  var agesMissing = [];
 
-
-class Chart extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { selectedAge: null, ages: null, data: [], layout: {}, frames: [], config: {} };
+  for (var i = 0; i < minAges; i++) {
+    agesMissing.push(i);
   }
 
-  render() {
-    let ages = [];
-    let countAges = [];
-    // let seriousness = [];
+  var agesObj = _(data)
+    .groupBy('age')
+    .map((item, itemId) => {
+      var obj = {};
+      obj[itemId] = _.countBy(item, 'age');
+      return obj
+    }).value();
 
-    Object.values(this.props.ages).map(item => {
-      ages.push(item.age)
-      countAges.push(item.sum)
-      // seriousness.push(item.)
-    })
 
-    var sensitive1 = {
-      x: ages,
-      y: countAges,
-      name: 'Sensitive',
-      type: 'bar'
-    };
-    var sensitive2 = {
-      x: 1,
-      y: 2,
-      name: 'Sensitive',
-      type: 'bar'
-    };
-    return (
-      <div>
-        <select onChange={e => this.setState({selectedAge: e.target.value})}>
-          <option>0</option>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-          <option>6</option>
-          <option>7</option>
-          <option>8</option>
-          <option>9</option>
-          <option>10</option>
-          <option>11</option>
-          <option>12</option>
-          <option>13</option>
-          <option>14</option>
-          <option>15</option>
-          <option>16</option>
-          <option>17</option>
-          <option>18</option>
-          <option>19</option>
-          <option>20</option>
-          <option>21</option>
-          <option>22</option>
-        </select>
-        <Plot
-          data={[sensitive1, sensitive2]}
-          layout={this.state.layout}
-          frames={this.state.frames}
-          config={this.state.config}
-          onInitialized={(figure) => this.setState(figure)}
-          onUpdate={(figure) => this.setState(figure)}
-        />
-      </div>
-    );
+  agesMissing.forEach(age => {
+    agesObj[(agesObj.length + 1)] = {[age]: {[age]: 0}};
+  })
+
+  console.log(agesObj)
+
+  var trace1 = {
+    x: _.range((props.selectedAge + 1) * 1),
+    y: _.range(19), // counts of each age
+    name: 'Ages',
+    type: 'bar'
   }
+  return (
+    <div>
+      <Plot
+        data={[
+          trace1
+        ]}
+        layout={ {barmode: 'group', title: 'Seriousness'} }
+      />
+    </div>
+  );
 }
 
 export default Chart;
