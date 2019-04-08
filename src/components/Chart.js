@@ -27,17 +27,24 @@ const Chart = props => {
     }
   })
 
-  var trace1 = {
+  var ages1 = {
     x: getValues(getGroup(props.data, 'age'), 0),
     y: getValues(getGroup(props.data, 'age'), 1), // counts of each age
     name: 'Ages',
     type: 'bar'
   }
-  
-  var trace2 = {
+
+  var ages2 = {
     x: getValues(trace2Group, 0),
     y: getValues(trace2Group, 1), // counts of each age
     name: 'Selected Age',
+    type: 'bar'
+  }
+
+  var seriousness1 = {
+    x: getValues(getGroup(props.data, 'seriousness'), 0),
+    y: getValues(getGroup(props.data, 'seriousness'), 1),
+    name: 'Seriousness',
     type: 'bar'
   }
 
@@ -45,9 +52,15 @@ const Chart = props => {
     <div>
       <Plot
         data={[
-          trace1, trace2
+          ages1, ages2
         ]}
         layout={ {barmode: 'group', title: 'Ages'} }
+      />
+      <Plot
+        data={[
+          seriousness1
+        ]}
+        layout={ {barmode: 'group', title: 'Severity'} }
       />
     </div>
   );

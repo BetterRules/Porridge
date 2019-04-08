@@ -33,6 +33,7 @@ function sortObj(data, group) {
     dataObj[(dataObj.length + 1)] = {[data]: {[data]: 0}};
   })
 
+  // console.log('dataatat', dataObj)
   return dataObj;
 }
 
