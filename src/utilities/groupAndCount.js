@@ -1,5 +1,17 @@
 import _ from 'lodash';
 
+function getMissingValues(array) {
+  var v = 0,
+    i = array.length,
+    result = [];
+
+  while (i--) {
+    if (!array.includes(v)) result.push(v);
+    ++v;
+  }
+  return result;
+}
+
 function groupAndCount(data, group) {
   var dataProvided = _(data)
     .groupBy(group)
@@ -9,13 +21,6 @@ function groupAndCount(data, group) {
       return arr[0]
     }).value()
 
-  var minData = _.min(dataProvided);
-  var dataMissing = [];
-
-  for (var i = 0; i < minData; i++) {
-    dataMissing.push(i);
-  }
-
   var dataObj = _(data)
     .groupBy(group)
     .map((item, itemId) => {
@@ -24,8 +29,7 @@ function groupAndCount(data, group) {
       return obj
     }).value();
 
-
-  dataMissing.forEach(data => {
+  getMissingValues(dataProvided).forEach(data => {
     dataObj[(dataObj.length + 1)] = {[data]: {[data]: 0}};
   })
 
