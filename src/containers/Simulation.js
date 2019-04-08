@@ -3,45 +3,22 @@ import React, { useState } from 'react'
 import Card from '@material-ui/core/Card';
 import Chart from '../components/Chart';
 import DataSet from '../charts/Data';
+import _ from 'lodash';
 
 const Simulation = () => {
 
-  const [age1, setAge1] = useState(18);
-
+  const [age, setAge] = useState(18);
 
   return (
     <div>
       <Card>
         <div style={{padding:'1.5em'}}>
-          <h2>Policy Development Simulator</h2>
           <label>Select Age Group:
-            <select onChange={e => setAge1(e.target.value)} aria-label="Select age group">
-              <option>0</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-              <option>6</option>
-              <option>7</option>
-              <option>8</option>
-              <option>9</option>
-              <option>10</option>
-              <option>11</option>
-              <option>12</option>
-              <option>13</option>
-              <option>14</option>
-              <option>15</option>
-              <option>16</option>
-              <option>17</option>
-              <option selected>18</option>
-              <option>19</option>
-              <option>20</option>
-              <option>21</option>
-              <option>22</option>
+            <select onChange={e => setAge(e.target.value)} aria-label="Select age group">
+              {_.range(22).map(item => item === 18 ? <option selected>{item}</option> : <option>{item}</option>)}
             </select>
           </label>
-          <Chart data={DataSet} selectedAge={age1} />
+          <Chart data={DataSet} selectedAge={age} />
         </div>
       </Card>
     </div>
