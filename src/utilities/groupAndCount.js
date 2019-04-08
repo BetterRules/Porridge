@@ -12,7 +12,7 @@ function getMissingValues(array) {
   return result;
 }
 
-function groupAndCount(data, group) {
+function sortObj(data, group) {
   var dataProvided = _(data)
     .groupBy(group)
     .map((item, itemId) => {
@@ -34,6 +34,19 @@ function groupAndCount(data, group) {
   })
 
   return dataObj;
+}
+
+function groupAndCount(data, group) {
+  var Obj = sortObj(data, group);
+
+  const newObj = []
+  Obj.map(item => {
+    for (const [key, val] of Object.entries(item)) {
+      newObj.push({[group]: key, count: val[key]})
+    }
+  })
+
+  return newObj;
 }
 
 export default groupAndCount;

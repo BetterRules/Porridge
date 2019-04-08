@@ -5,7 +5,9 @@ import groupAndCount from '../utilities/groupAndCount';
 
 const Chart = props => {
 
-  console.log(groupAndCount(props.data, 'age'))
+  const agesObj = groupAndCount(props.data, 'age');
+
+  console.log(agesObj)
 
   var trace1 = {
     x: _.range((props.selectedAge + 1) * 1),
