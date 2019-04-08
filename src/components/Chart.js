@@ -1,15 +1,14 @@
 import React from 'react';
 import Plot from 'react-plotly.js';
-import _ from 'lodash';
 import groupAndCount from '../utilities/groupAndCount';
 
 const Chart = props => {
 
-  function getGroup(data, filter) {
-    const group = groupAndCount(data, filter);
+  function getGroup(data, filter, missing_numbers) {
+    const group = groupAndCount(data, filter, missing_numbers);
     const obj = [];
     Object.values(group).map(item => {
-      obj.push([item[filter] * 1, item.count])
+      return obj.push([item[filter] * 1, item.count])
     })
 
     return obj;
@@ -21,15 +20,16 @@ const Chart = props => {
 
   const trace2Group = [];
 
-  getGroup(props.data, 'age').map(item => {
+  getGroup(props.data, 'age', true).map(item => {
     if(item[0] === (props.selectedAge * 1)) {
       trace2Group.push([item[0], item[1]])
     }
+    return trace2Group;
   })
 
   var ages1 = {
-    x: getValues(getGroup(props.data, 'age'), 0),
-    y: getValues(getGroup(props.data, 'age'), 1), // counts of each age
+    x: getValues(getGroup(props.data, 'age', true), 0),
+    y: getValues(getGroup(props.data, 'age', true), 1), // counts of each age
     name: 'Ages',
     type: 'bar'
   }
@@ -42,8 +42,8 @@ const Chart = props => {
   }
 
   var seriousness1 = {
-    x: getValues(getGroup(props.data, 'seriousness'), 0),
-    y: getValues(getGroup(props.data, 'seriousness'), 1),
+    x: getValues(getGroup(props.data, 'seriousness', false), 0),
+    y: getValues(getGroup(props.data, 'seriousness', false), 1),
     name: 'Seriousness',
     type: 'bar'
   }

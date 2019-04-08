@@ -1,15 +1,13 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './App.css';
 import AccordionItem from './containers/Accordion-Item';
 import Simulation from './containers/Simulation';
 import Paper from '@material-ui/core/Paper';
 import DATA from './openfisca/Data'
 
-import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
 
 class App extends React.Component {
 
@@ -25,7 +23,7 @@ class App extends React.Component {
     const { value } = this.state;
     return (
       <Paper className="App">
-        <p><h1>Policy Development Simulator</h1></p>
+        <h1>Policy Development Simulator</h1>
         <AppBar position="static">
           <Tabs value={value} onChange={this.handleChange}>
             <Tab label="Charts" />

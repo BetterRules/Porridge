@@ -12,10 +12,10 @@ const Simulation = () => {
   return (
     <div>
       <Card>
-        <div style={{padding:'1.5em'}}>
+        <div className="spacer">
           <label>Select Age Group:
-            <select onChange={e => setAge(e.target.value)} aria-label="Select age group">
-              {_.range(22).map(item => item === 18 ? <option selected>{item}</option> : <option>{item}</option>)}
+            <select defaultValue="18" onChange={e => setAge(e.target.value)} aria-label="Select age group">
+              {_.range(22).map(item => <option key={`${item}_option`}>{item}</option>)}
             </select>
           </label>
           <Chart data={DataSet} selectedAge={age} />

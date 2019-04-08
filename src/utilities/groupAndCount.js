@@ -12,7 +12,7 @@ function getMissingValues(array) {
   return result;
 }
 
-function sortObj(data, group) {
+function sortObj(data, group, missing_numbers) {
   var dataProvided = _(data)
     .groupBy(group)
     .map((item, itemId) => {
@@ -29,15 +29,17 @@ function sortObj(data, group) {
       return obj
     }).value();
 
-  getMissingValues(dataProvided).forEach(data => {
-    dataObj[(dataObj.length + 1)] = {[data]: {[data]: 0}};
-  })
+  if(missing_numbers) {
+    getMissingValues(dataProvided).forEach(data => {
+      dataObj[(dataObj.length + 1)] = {[data]: {[data]: 0}};
+    })
+  }
 
   return dataObj;
 }
 
-function groupAndCount(data, group) {
-  var Obj = sortObj(data, group);
+function groupAndCount(data, group, missing_numbers) {
+  var Obj = sortObj(data, group, missing_numbers);
 
   const newObj = []
   Obj.map(item => {
