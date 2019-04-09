@@ -70,7 +70,7 @@ const DATA = [
   // Incapacity began at 25 (2025-06-01), not eligible on 2025-09-01, eligible in 2026-01-02
   {
     firstName: 'Sensitive',
-    lastName: 'Claiment',
+    lastName: 'Claimant',
     acc__earner: [
       ['ETERNITY', false]
     ],
@@ -134,7 +134,7 @@ const DATA = [
   },
   {
     firstName: 'Sensitive',
-    lastName: 'Claiment 2',
+    lastName: 'Claimant 2',
     acc__earner: [
       ['ETERNITY', true]
     ],
