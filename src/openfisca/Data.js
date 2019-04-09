@@ -49,14 +49,14 @@ const DATA = [
       ['2023-08-06', null],
       ['2024-08-06', null]
     ],
-    acc_sched_1__lope_eligible: [
+    acc__sched_1__lope_eligible: [
       ['2020-09-06', null],
       ['2021-09-06', null],
       ['2022-09-06', null],
       ['2023-09-06', null],
       ['2024-09-06', null]
     ],
-    acc_sched_1__lope_weekly_compensation: [
+    acc__sched_1__lope_weekly_compensation: [
       ['2020-09-06', null],
       ['2021-09-06', null],
       ['2022-09-06', null],
@@ -114,7 +114,7 @@ const DATA = [
     acc__potential_earner: [
       ['2020-09-06', null]
     ],
-    acc_sched_1__lope_eligible: [
+    acc__sched_1__lope_eligible: [
       ['2020-09-06', null],
       ['2021-09-06', null],
       ['2022-09-06', null],
@@ -124,7 +124,7 @@ const DATA = [
     age: [
       ['2020-09-06', null]
     ],
-    acc_sched_1__lope_weekly_compensation: [
+    acc__sched_1__lope_weekly_compensation: [
       ['2020-09-06', null],
       ['2021-09-06', null],
       ['2022-09-06', null],
@@ -178,7 +178,7 @@ const DATA = [
     acc__potential_earner: [
       ['2020-09-06', null]
     ],
-    acc_sched_1__lope_eligible: [
+    acc__sched_1__lope_eligible: [
       ['2020-09-06', null],
       ['2021-09-06', null],
       ['2022-09-06', null],
@@ -188,7 +188,7 @@ const DATA = [
     age: [
       ['2020-09-06', null]
     ],
-    acc_sched_1__lope_weekly_compensation: [
+    acc__sched_1__lope_weekly_compensation: [
       ['2020-09-06', null],
       ['2021-09-06', null],
       ['2022-09-06', null],
