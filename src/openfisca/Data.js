@@ -5,16 +5,16 @@ const DATA = [
     acc__earner: [
       ['ETERNITY', false]
     ],
-    acc_sched_1__loe_more_than_lope: [
+    acc__sched_1__loe_more_than_lope: [
       ['ETERNITY', false]
     ],
-    acc_part_2__suffered_personal_injury: [
+    acc__part_2__suffered_personal_injury: [
       ['ETERNITY', true]
     ],
     acc__part_3__has_lodged_claim: [
       ['ETERNITY', true]
     ],
-    acc_sched_1__incapacitated_for_6_months: [
+    acc__sched_1__incapacitated_for_6_months: [
       ['ETERNITY', true]
     ],
     date_of_birth: [
@@ -32,13 +32,13 @@ const DATA = [
     acc__lope__incapacity_for_employment__by_covered_injury: [
       ['ETERNITY', true]
     ],
-    acc_sched_1__weekly_earnings: [
+    acc__sched_1__weekly_earnings: [
       ['2018-08-05', 0]
     ],
     acc__has_cover: [
       ['2000-01-01', true]
     ],
-    acc_sched_1__engaged_fulltime_study_or_training: [
+    acc__sched_1__engaged_fulltime_study_or_training: [
       ['2000-01-01', false]
     ],
     // Output
@@ -74,16 +74,16 @@ const DATA = [
     acc__earner: [
       ['ETERNITY', false]
     ],
-    acc_sched_1__loe_more_than_lope: [
+    acc__sched_1__loe_more_than_lope: [
       ['ETERNITY', false ],
     ],
-    acc_part_2__suffered_personal_injury: [
+    acc__part_2__suffered_personal_injury: [
       ['ETERNITY', true]
     ],
     acc__part_3__has_lodged_claim: [
       ['ETERNITY', true]
     ],
-    acc_sched_1__incapacitated_for_6_months: [
+    acc__sched_1__incapacitated_for_6_months: [
       ['ETERNITY', true]
     ],
     date_of_birth: [
@@ -98,13 +98,13 @@ const DATA = [
     acc__lope__incapacity_for_employment__by_covered_injury: [
       ['ETERNITY', true]
     ],
-    acc_sched_1__weekly_earnings: [
+    acc__sched_1__weekly_earnings: [
       ['2021-09-06', 0]
     ],
     acc__has_cover: [
       ['2018-08-03', true]
     ],
-    acc_sched_1__engaged_fulltime_study_or_training: [
+    acc__sched_1__engaged_fulltime_study_or_training: [
       ['2006-08-03', false]
     ],
     incapacity_for_employment__corporation_determination: [
@@ -138,16 +138,16 @@ const DATA = [
     acc__earner: [
       ['ETERNITY', true]
     ],
-    acc_sched_1__loe_more_than_lope: [
+    acc__sched_1__loe_more_than_lope: [
       ['ETERNITY', true ],
     ],
-    acc_part_2__suffered_personal_injury: [
+    acc__part_2__suffered_personal_injury: [
       ['ETERNITY', true]
     ],
     acc__part_3__has_lodged_claim: [
       ['ETERNITY', true]
     ],
-    acc_sched_1__incapacitated_for_6_months: [
+    acc__sched_1__incapacitated_for_6_months: [
       ['ETERNITY', true]
     ],
     date_of_birth: [
@@ -162,13 +162,13 @@ const DATA = [
     acc__lope__incapacity_for_employment__by_covered_injury: [
       ['ETERNITY', true]
     ],
-    acc_sched_1__weekly_earnings: [
+    acc__sched_1__weekly_earnings: [
       ['2021-09-06', 0]
     ],
     acc__has_cover: [
       ['2018-08-03', true]
     ],
-    acc_sched_1__engaged_fulltime_study_or_training: [
+    acc__sched_1__engaged_fulltime_study_or_training: [
       ['2006-08-03', false]
     ],
     incapacity_for_employment__corporation_determination: [

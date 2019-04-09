@@ -147,19 +147,19 @@ const importantDates = [
 
 const changableBooleansWithDates = [
   ['acc__has_cover', 'Has Cover?'],
-  ['acc_sched_1__engaged_fulltime_study_or_training', 'Engaged Fulltime Study or Training'],
+  ['acc__sched_1__engaged_fulltime_study_or_training', 'Engaged Fulltime Study or Training'],
   ['incapacity_for_employment__corporation_determination', 'ACC determination of incapacity'],
 ]
 const changableBooleans = [
-  ['acc_sched_1__loe_more_than_lope', 'Entitled to Higher LOE'],
+  ['acc__sched_1__loe_more_than_lope', 'Entitled to Higher LOE'],
   ['acc__earner', 'Is EARNER at date of Injury?'],
-  ['acc_part_2__suffered_personal_injury', 'Suffered Injury?'],
+  ['acc__part_2__suffered_personal_injury', 'Suffered Injury?'],
   ['acc__part_3__has_lodged_claim', 'Lodged Claim?'],
-  ['acc_sched_1__incapacitated_for_6_months', 'Incapacitated at least 6 months'],
+  ['acc__sched_1__incapacitated_for_6_months', 'Incapacitated at least 6 months'],
   ['acc__lope__incapacity_for_employment__by_covered_injury', 'Covered Injury'] //??
 
 ]
 
 const changeableNumbers = [
-  ['acc_sched_1__weekly_earnings', 'Weekly Earnings' ]
+  ['acc__sched_1__weekly_earnings', 'Weekly Earnings' ]
 ]
