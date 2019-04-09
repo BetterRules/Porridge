@@ -7,8 +7,10 @@
     "@material-ui/icons": "^3.0.2",
     "axios": "^0.18.0",
     "lodash": "^4.17.11",
+    "plotly.js": "^1.46.1",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
+    "react-plotly.js": "^2.3.0",
     "react-scripts": "2.1.8",
     "styled-components": "^4.1.3"
   },
