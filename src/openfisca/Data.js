@@ -11,7 +11,7 @@ const DATA = [
     acc_part_2__suffered_personal_injury: [
       ['ETERNITY', true]
     ],
-    acc_part_3__has_lodged_claim: [
+    acc__part_3__has_lodged_claim: [
       ['ETERNITY', true]
     ],
     acc_sched_1__incapacitated_for_6_months: [
@@ -29,7 +29,7 @@ const DATA = [
     incapacity_for_employment__corporation_determination: [
       ['2000-01-01', true]
     ],
-    incapacity_for_employment__by_covered_injury: [
+    acc__lope__incapacity_for_employment__by_covered_injury: [
       ['ETERNITY', true]
     ],
     acc_sched_1__weekly_earnings: [
@@ -80,7 +80,7 @@ const DATA = [
     acc_part_2__suffered_personal_injury: [
       ['ETERNITY', true]
     ],
-    acc_part_3__has_lodged_claim: [
+    acc__part_3__has_lodged_claim: [
       ['ETERNITY', true]
     ],
     acc_sched_1__incapacitated_for_6_months: [
@@ -95,7 +95,7 @@ const DATA = [
     finish_date_of_full_time_study_training_bridging_18th_birthday: [
       ['ETERNITY', '2015-05-05']
     ],
-    incapacity_for_employment__by_covered_injury: [
+    acc__lope__incapacity_for_employment__by_covered_injury: [
       ['ETERNITY', true]
     ],
     acc_sched_1__weekly_earnings: [
@@ -144,7 +144,7 @@ const DATA = [
     acc_part_2__suffered_personal_injury: [
       ['ETERNITY', true]
     ],
-    acc_part_3__has_lodged_claim: [
+    acc__part_3__has_lodged_claim: [
       ['ETERNITY', true]
     ],
     acc_sched_1__incapacitated_for_6_months: [
@@ -159,7 +159,7 @@ const DATA = [
     finish_date_of_full_time_study_training_bridging_18th_birthday: [
       ['ETERNITY', '2015-05-05']
     ],
-    incapacity_for_employment__by_covered_injury: [
+    acc__lope__incapacity_for_employment__by_covered_injury: [
       ['ETERNITY', true]
     ],
     acc_sched_1__weekly_earnings: [
