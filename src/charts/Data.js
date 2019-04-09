@@ -1,4 +1,4 @@
-var DataSet = [
+const DataSet = [
   {'age': 7, 'seriousness':3.8},
   {'age': 16, 'seriousness':4.3},
   {'age': 18, 'seriousness':1.5},
