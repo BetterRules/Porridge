@@ -1,39 +1,26 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
 import Card from '@material-ui/core/Card';
 import Chart from '../components/Chart';
+import DataSet from '../charts/Data';
+import _ from 'lodash';
 
-const Simulation = (props) => {
-  const { person } = props
-  //const [currentPerson, updatePerson] = useState(person)
-  //const [eligible, setIsEligible] = useState(null);
+const Simulation = () => {
 
-  useEffect(() => {
-    //function handleEligibility(res) {
-    //  setIsEligible(res.acc_sched_1__lope_eligible)
-    //}
-    //if(eligible == null) QueryOF(currentPerson, handleEligibility)
-  });
-
-
+  const [age, setAge] = useState(18);
 
   return (
     <div>
-        <Card>
-            <div style={{padding:'1.5em'}}>
-                <h2>Policy Development Simulator</h2>
-                <h3>Sensitive Claims</h3>
-                <Chart />
-                <h3>Birth Injuries</h3>
-                <Chart />
-                <h3>High level spinal</h3>
-                <Chart />
-                <h3>Knee Injury</h3>
-                <Chart />
-                <h3>Severe Burns</h3>
-                <Chart />
-            </div>
-        </Card>
+      <Card>
+        <div className="spacer">
+          <label>Select Age Group:
+            <select defaultValue="18" onChange={e => setAge(e.target.value)} aria-label="Select age group">
+              {_.range(22).map(item => <option key={`${item}_option`}>{item}</option>)}
+            </select>
+          </label>
+          <Chart data={DataSet} selectedAge={age} />
+        </div>
+      </Card>
     </div>
   );
 }

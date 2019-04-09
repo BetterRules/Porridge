@@ -14,7 +14,7 @@ const AccordionItem = (props) => {
   const [eligible, setIsEligible] = useState(null);
   const [weeklyCompensation, setWeeklyCompensation] = useState(null);
   const backgroundColour = eligible && eligible && eligible[Object.keys(eligible)[0]] ? '#cfc': '#fcc'
-  
+
   const handleChange = (name, date, value, dateIsValueToUpdate) => event => {
     const newDate = dateIsValueToUpdate
     ? event.target.value
@@ -28,18 +28,18 @@ const AccordionItem = (props) => {
         ? event.target.checked
         : event.target.value
     const updatedData = [newDate, newValue]
-  
+
     updatePerson({...currentPerson, [name]: [updatedData] })
   };
 
   useEffect(() => {
     function handleEligibility(res) {
-      setIsEligible(res.acc_sched_1__lope_eligible)
-      setWeeklyCompensation(res.acc_sched_1__lope_weekly_compensation)
+      setIsEligible(res.acc__sched_1__lope_eligible)
+      setWeeklyCompensation(res.acc__sched_1__lope_weekly_compensation)
     }
     QueryOF(currentPerson, handleEligibility)
   }, [currentPerson]);
-  
+
   const handleAccordionChange = panel => (e, expanded) => {
       expanded ? expandedPanel(panel) : expandedPanel(false)
   };

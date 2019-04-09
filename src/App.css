@@ -30,7 +30,7 @@ html, body {
 	height: 100%;
 	min-height: 100vh;
 	display: flex;
-	flex-direction: column 
+	flex-direction: column
 }
 
 .Flex-Row {
@@ -40,7 +40,7 @@ html, body {
 }
 .Flex-Column {
 	display: flex;
-	flex-direction: column 
+	flex-direction: column
 }
 
 .Form-Date {
@@ -50,4 +50,12 @@ html, body {
 }
 .Input-Date {
 	width: 20rem
-  }
+}
+
+.spacer {
+  padding: 1.5em;
+}
+
+select {
+  margin: 1rem;
+}
