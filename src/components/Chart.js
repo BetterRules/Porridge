@@ -30,7 +30,7 @@ const Chart = props => {
   var ages1 = {
     x: getValues(getGroup(props.data, 'age', true), 0),
     y: getValues(getGroup(props.data, 'age', true), 1), // counts of each age
-    name: 'Age Groups',
+    name: 'Age',
     type: 'bar'
   }
 
@@ -54,7 +54,7 @@ const Chart = props => {
         data={[
           ages1, ages2
         ]}
-        layout={ {barmode: 'group', title: 'Ages'} }
+        layout={ {barmode: 'group', title: 'Age Groups'} }
       />
       <Plot
         data={[
