@@ -1,7 +1,7 @@
 import _ from 'lodash';
 
 function getMissingValues(array) {
-  var v = 0,
+  let v = 0,
     i = array.length,
     result = [];
 
@@ -13,18 +13,18 @@ function getMissingValues(array) {
 }
 
 function sortObj(data, group, missing_numbers) {
-  var dataProvided = _(data)
+  let dataProvided = _(data)
     .groupBy(group)
     .map((item, itemId) => {
-      var arr = [];
+      let arr = [];
       arr.push(itemId * 1)
       return arr[0]
-    }).value()
+    }).value();
 
-  var dataObj = _(data)
+  let dataObj = _(data)
     .groupBy(group)
     .map((item, itemId) => {
-      var obj = {};
+      let obj = {};
       obj[itemId] = _.countBy(item, group);
       return obj
     }).value();
@@ -39,7 +39,7 @@ function sortObj(data, group, missing_numbers) {
 }
 
 function groupAndCount(data, group, missing_numbers) {
-  var Obj = sortObj(data, group, missing_numbers);
+  let Obj = sortObj(data, group, missing_numbers);
 
   const newObj = []
   Obj.map(item => {
