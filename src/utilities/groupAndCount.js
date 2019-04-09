@@ -42,7 +42,7 @@ function groupAndCount(data, group, missing_numbers) {
   let Obj = sortObj(data, group, missing_numbers);
 
   const newObj = []
-  Obj.map(item => {
+  Obj.forEach(item => {
     for (const [key, val] of Object.entries(item)) {
       newObj.push({[group]: key, count: val[key]})
     }
