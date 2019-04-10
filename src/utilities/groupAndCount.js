@@ -1,10 +1,10 @@
 import _ from 'lodash';
 
-function getMissingValues(array) {
+function getMissingValues(array, max) {
   let v = 0,
-    i = array.length,
+    i = (max) ? max : array.length,
     result = [];
-
+console.log(max);
   while (i--) {
     if (!array.includes(v)) result.push(v);
     ++v;
@@ -12,7 +12,7 @@ function getMissingValues(array) {
   return result;
 }
 
-function sortObj(data, group, missing_numbers) {
+function sortObj(data, group, missing_numbers, max) {
   let dataProvided = _(data)
     .groupBy(group)
     .map((item, itemId) => {
@@ -30,7 +30,7 @@ function sortObj(data, group, missing_numbers) {
     }).value();
 
   if(missing_numbers) {
-    getMissingValues(dataProvided).forEach(data => {
+    getMissingValues(dataProvided, max).forEach(data => {
       dataObj[(dataObj.length + 1)] = {[data]: {[data]: 0}};
     })
   }
@@ -38,8 +38,8 @@ function sortObj(data, group, missing_numbers) {
   return dataObj;
 }
 
-function groupAndCount(data, group, missing_numbers) {
-  let Obj = sortObj(data, group, missing_numbers);
+function groupAndCount(data, group, missing_numbers, max) {
+  let Obj = sortObj(data, group, missing_numbers, max);
   const newObj = []
   Obj.forEach(item => {
     for (const [key, val] of Object.entries(item)) {
