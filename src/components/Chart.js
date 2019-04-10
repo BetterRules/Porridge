@@ -4,8 +4,8 @@ import groupAndCount from '../utilities/groupAndCount';
 
 const Chart = props => {
 
-  function getGroup(data, filter, missing_numbers) {
-    const group = groupAndCount(data, filter, missing_numbers);
+  function getGroup(data, filter, missing_numbers, max) {
+    const group = groupAndCount(data, filter, missing_numbers, max);
     const obj = [];
     Object.values(group).map(item => {
       return obj.push([item[filter] * 1, item.count])
@@ -24,31 +24,38 @@ const Chart = props => {
     }
   });
 
+  let ageAs18Data = [];
+  props.data.map(item => {
+    if(item['age'] <= 18) {
+      ageAs18Data.push(item);
+    }
+  });
+
   var ages1 = {
-    x: getValues(getGroup(props.data, 'age', true), 0),
-    y: getValues(getGroup(props.data, 'age', true), 1), // counts of each age
-    name: 'Age',
+    x: getValues(getGroup(ageAs18Data, 'age', true, 23), 0),
+    y: getValues(getGroup(ageAs18Data, 'age', true, 23), 1), // counts of each age
+    name: 'Age limit as 18',
     type: 'bar'
   }
 
   var ages2 = {
-    x: getValues(getGroup(ageStrippedData, 'age', true), 0),
-    y: getValues(getGroup(ageStrippedData, 'age', true), 1), // counts of each age
-    name: 'Selected Age',
+    x: getValues(getGroup(ageStrippedData, 'age', true, 23), 0),
+    y: getValues(getGroup(ageStrippedData, 'age', true, 23), 1), // counts of each age
+    name: 'Age limit as selected',
     type: 'bar'
   }
 
   var seriousness1 = {
-    x: getValues(getGroup(props.data, 'seriousness', false), 0),
-    y: getValues(getGroup(props.data, 'seriousness', false), 1),
-    name: 'Seriousness',
+    x: getValues(getGroup(ageAs18Data, 'seriousness', true, 6), 0),
+    y: getValues(getGroup(ageAs18Data, 'seriousness', true, 6), 1),
+    name: 'Age limit as 18',
     type: 'bar'
   }
 
   var seriousness2 = {
-    x: getValues(getGroup(ageStrippedData, 'seriousness', false), 0),
-    y: getValues(getGroup(ageStrippedData, 'seriousness', false), 1),
-    name: 'Seriousness',
+    x: getValues(getGroup(ageStrippedData, 'seriousness', true, 6), 0),
+    y: getValues(getGroup(ageStrippedData, 'seriousness', true, 6), 1),
+    name: 'Age limit as selected',
     type: 'bar'
   }
 
