@@ -40,7 +40,6 @@ function sortObj(data, group, missing_numbers) {
 
 function groupAndCount(data, group, missing_numbers) {
   let Obj = sortObj(data, group, missing_numbers);
-
   const newObj = []
   Obj.forEach(item => {
     for (const [key, val] of Object.entries(item)) {

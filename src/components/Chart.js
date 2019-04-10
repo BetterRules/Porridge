@@ -10,7 +10,6 @@ const Chart = props => {
     Object.values(group).map(item => {
       return obj.push([item[filter] * 1, item.count])
     })
-
     return obj;
   }
 
@@ -18,14 +17,12 @@ const Chart = props => {
     return Object.values(obj).map(item => item[index])
   }
 
-  const trace2Group = [];
-
-  getGroup(props.data, 'age', true).map(item => {
-    if(item[0] === (props.selectedAge * 1)) {
-      trace2Group.push([item[0], item[1]])
+  let ageStrippedData = [];
+  props.data.map(item => {
+    if(item['age'] <= (props.selectedAge * 1)) {
+      ageStrippedData.push(item);
     }
-    return trace2Group;
-  })
+  });
 
   var ages1 = {
     x: getValues(getGroup(props.data, 'age', true), 0),
@@ -35,8 +32,8 @@ const Chart = props => {
   }
 
   var ages2 = {
-    x: getValues(trace2Group, 0),
-    y: getValues(trace2Group, 1), // counts of each age
+    x: getValues(getGroup(ageStrippedData, 'age', true), 0),
+    y: getValues(getGroup(ageStrippedData, 'age', true), 1), // counts of each age
     name: 'Selected Age',
     type: 'bar'
   }
@@ -44,6 +41,13 @@ const Chart = props => {
   var seriousness1 = {
     x: getValues(getGroup(props.data, 'seriousness', false), 0),
     y: getValues(getGroup(props.data, 'seriousness', false), 1),
+    name: 'Seriousness',
+    type: 'bar'
+  }
+
+  var seriousness2 = {
+    x: getValues(getGroup(ageStrippedData, 'seriousness', false), 0),
+    y: getValues(getGroup(ageStrippedData, 'seriousness', false), 1),
     name: 'Seriousness',
     type: 'bar'
   }
@@ -58,7 +62,7 @@ const Chart = props => {
       />
       <Plot
         data={[
-          seriousness1
+          seriousness1, seriousness2
         ]}
         layout={ {barmode: 'group', title: 'Severity'} }
       />
